@@ -1,7 +1,7 @@
 import { SET_USER } from './actions';
 
 const initialState = {
-  name: null
+  name: 'kst'
 }
 
 const reducer = (state = initialState, action) => {

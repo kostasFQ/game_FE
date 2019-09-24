@@ -1,26 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
-import { TextField } from '@material-ui/core';
-import { Button } from '@material-ui/core';
+import { Button, Message, Form } from 'semantic-ui-react';
+import validation from './validation';
+import styles from './LoginForm.module.scss';
 
 function LoginForm() {
   return (
-    <Fragment>
+    <div className={styles.form}>
       <Formik
         initialValues={{email: '', password: ''}}
-        validate={values => {
-          let errors = {};
-          if(!values.email) {
-            errors.email = 'Required';
-          }
-          else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
-            errors.email = 'Invalid'
-          }
-          if(!values.password) {
-            errors.password = 'Required';
-          }
-          return errors;
-        }}
+        validate={values => validation(values)}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -37,32 +26,45 @@ function LoginForm() {
         handleSubmit,
         isSubmitting,
       }) => (
-        <form onSubmit={handleSubmit}>
-          <TextField
+        <Form onSubmit={handleSubmit}>
+          <Form.Input
+            fluid
             type="email"
             name="email"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email}
-            error={!!errors.email && !!touched.email}
+            placeholder='email'
+            error={errors.email && touched.email && !!errors.email}
           />
-          {errors.email && touched.email && errors.email}
-          <TextField
-            type="password"
-            name="password"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.password}
-          />
-          {errors.password && touched.password && errors.password}
+
+          {/* {errors.email && touched.email && errors.email} */}
+
+          {/* <Message
+            error
+            header='Action Forbidden'
+            content='You can only sign up for an account once with a given e-mail address.'
+          /> */}
+          
+          {/* <Form.Field>
+            <Form.Input
+              type="password"
+              name="password"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.password}
+              placeholder='password'
+            />
+            {errors.password && touched.password && errors.password}
+          </Form.Field>
           <Button type="submit" disabled={isSubmitting}>
             Submit
-          </Button>
-        </form>
+          </Button> */}
+        </Form>
       )}
 
       </Formik>
-    </Fragment>
+    </div>
   );
 }
 

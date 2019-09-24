@@ -1,65 +1,25 @@
 import React, { Fragment } from 'react';
-import { Switch, Route, Link, /* Redirect */ } from "react-router-dom";
 import { connect } from 'react-redux';
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { setUser } from './store/user/actions'
-import HomePage from 'views/HomePage'
-import LoginPage from 'views/LoginPage'
-// import UserProfile from 'views/UserProfile'
-import NotFound from 'views/NotFound'
-
-
-// function PrivateRoute({ component: Component, name, ...rest }) {
-//   console.log('----', name)
-
-//   return (
-//     <Route
-//       {...rest}
-//       render={props =>
-//         name ? (
-//           <Component {...props} />
-//         ) : (
-//             <Redirect
-//               to={{
-//                 pathname: "/login",
-//                 state: { from: props.location }
-//               }}
-//             />
-//           )
-//       }
-//     />
-//   )
-// }
+// import TopMenu from 'components/TopMenu/container';
+import NotFound from 'views/NotFound';
+import UserProfile from 'views/UserProfile';
+import HomePage from 'views/HomePage';
+import LoginPage from 'views/LoginPage';
 
 function App(props) {
-  const { state: { name } } = props;
-  console.log(name)
-
-  if(!name) {
-    return (
-      <Fragment>
-        <button onClick={props.setUser}>log</button>
-        {/* <button onClick={props.resetUser}>out</button> */}
-        <LoginPage />
-      </Fragment>
-    )
-  }
-
   return (
     <Fragment>
-      {/* <Link to='/login'>Log in</Link> */}
-      <Link to='/'>Home</Link>
-      <Link to='/user'>Profile</Link>
-      <Link to='/xxxx'>xxxx</Link>
-      <button onClick={props.setUser}>log</button>
-      <button onClick={props.resetUser}>out</button>
-      <div>
+      <Router>
+      {/* <TopMenu /> */}
         <Switch>
-          <Route path={'/'} exact component={HomePage} />
-          {/* <Route path={'/login'} component={LoginPage} /> */}
-          {/* <PrivateRoute path={'/user'} component={UserProfile} name={name} /> */}
+          <Route path='/' exact component={HomePage} />
+          <Route path='/profile' component={UserProfile} />
+          <Route path='/login' component={LoginPage} />
           <Route component={NotFound} />
         </Switch>
-      </div>
+      </Router>
     </Fragment>
   );
 }
