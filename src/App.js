@@ -15,7 +15,7 @@ function App(props) {
       {/* <TopMenu /> */}
         <Switch>
           <Route path='/' exact component={HomePage} />
-          <Route path='/profile' component={UserProfile} />
+          <Route path='/profile' component={UserProfile} /> {/* TODO: need to make it as private route*/}
           <Route path='/login' component={LoginPage} />
           <Route component={NotFound} />
         </Switch>
