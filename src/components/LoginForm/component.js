@@ -5,6 +5,7 @@ import { Button, Form, Input } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 import validation from './validation';
 import { makeCall } from 'api/call';
+import cn from 'classnames';
 import styles from './LoginForm.module.scss';
 
 function LoginForm(props) {
@@ -17,7 +18,8 @@ function LoginForm(props) {
         validate={values => validation(values)}
         onSubmit={async (values, { setSubmitting }) => {
           try {
-            await makeCall(values);
+            const response = await makeCall(values);
+            console.log('response: ', response);
             setSubmitting(false);
             history.push('/profile');
           } catch(err) {
@@ -39,7 +41,6 @@ function LoginForm(props) {
             <Input
               label={{ icon: 'asterisk' }}
               labelPosition='right corner'
-              type="email"
               name="email"
               placeholder='email'
               onChange={handleChange}
@@ -47,11 +48,9 @@ function LoginForm(props) {
               value={values.email}
               error={!!errors.email && !!touched.email}
             />
-            {
-              errors.email && touched.email && (
-                <div className={styles.errorMessage}>{errors.email}</div>
-              )
-            }
+              <div className={cn(errors.email && touched.email ? styles.errorMessageActive : styles.errorMessageHide)}>
+                {errors.email}
+              </div>
           </Form.Field>
 
           <Form.Field className={styles.field}>
@@ -66,14 +65,12 @@ function LoginForm(props) {
               value={values.password}
               error={!!errors.password && !!touched.password}
             />
-            {
-              errors.password && touched.password && (
-                <div className={styles.errorMessage}>{errors.password}</div>
-              )
-            }
+            <div className={cn(errors.password && touched.password ? styles.errorMessageActive : styles.errorMessageHide)}>
+              {errors.password}
+            </div>
           </Form.Field>
           <div className={styles.buttonsBlock}>
-            <Button type="submit" loading={isSubmitting}>
+            <Button type="submit" loading={isSubmitting} basic color='grey'>
               Log In
             </Button>
           </div>

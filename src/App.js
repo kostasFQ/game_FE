@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { setUser } from './store/user/actions'
 // import TopMenu from 'components/TopMenu/container';
-import NotFound from 'views/NotFound';
-import UserProfile from 'views/UserProfile';
+import NotFoundPage from 'views/NotFoundPage';
+import UserProfilePage from 'views/UserProfilePage';
 import HomePage from 'views/HomePage';
 import LoginPage from 'views/LoginPage';
+import RegistrationPage from 'views/RegistrationPage';
 
 function App(props) {
   return (
@@ -15,9 +15,10 @@ function App(props) {
       {/* <TopMenu /> */}
         <Switch>
           <Route path='/' exact component={HomePage} />
-          <Route path='/profile' component={UserProfile} /> {/* TODO: need to make it as private route*/}
           <Route path='/login' component={LoginPage} />
-          <Route component={NotFound} />
+          <Route path='/register' component={RegistrationPage} />
+          <Route path='/profile' component={UserProfilePage} /> {/* TODO: need to make it as private route*/}
+          <Route component={NotFoundPage} />
         </Switch>
       </Router>
     </Fragment>
@@ -28,9 +29,4 @@ const mapStateToProps = state => ({
   state: state.user,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setUser: () => dispatch(setUser('kst')),
-  resetUser: () => dispatch(setUser(null)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

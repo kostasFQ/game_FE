@@ -10,8 +10,14 @@
   .field {
     height: 50px;
 
-    .errorMessage {
+    .errorMessageActive {
       color: red;
+      transition: 1s;
+    }
+
+    .errorMessageHide {
+      color: transparent;
+      transition: 1s;
     }
   }
 

@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 
-function UserProfile() {
+function RegistrationPage() {
   return (
     <Fragment>
-      !!!!!!!!!!!!!
+      REGISTRATION
     </Fragment>
   );
 }
 
-export default UserProfile;
+export default RegistrationPage;

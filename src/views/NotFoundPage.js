@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-function NotFound() {
+function NotFoundPage() {
   return (
     <Fragment>
       404
@@ -8,4 +8,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default NotFoundPage;
