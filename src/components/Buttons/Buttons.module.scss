@@ -1,0 +1,79 @@
+:root {
+  --text: rgba(0,0,0,.25);
+  --background: #899095;
+  --background_light: #969DA3;
+  --background_dark: #7D878F;
+  --overlay_medium: rgba(0,0,0,.2);
+  --overlay_dark: rgba(0,0,0,.2);
+  --text_shadow: rgba(255,255,255,.15);
+  --focus: rgba(255,255,255,.15);
+}
+
+.button {
+  position: relative;
+  appearance: none;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  height: 100px;
+  background: var( --background );
+  border-radius: 50%;
+  border: 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var( --text );
+  text-shadow: 1px 1px var( --text_shadow );
+  cursor: pointer;
+  margin: 6px 6px;
+  letter-spacing: .1em;
+  transition: all 200ms ease;
+  box-shadow:
+    -1px  -1px 1px var( --background ),
+    0 0 0 4px var( --overlay_medium ),
+    1px  1px 1px var( --background_dark ),
+    inset .0 .0 .0 var( --overlay_dark ),
+    inset .5rem .5rem .25rem var( --background_light );
+
+  &:focus{
+    outline:none;
+    box-shadow:
+      -1px -1px 1px var( --background_dark ),
+      0 0 0 4px var( --focus ),
+      1px  1px 1px var( --background_dark ),
+      inset 0 0 0 var( --overlay_dark ),
+      inset .5rem .5rem .25rem var( --background_light );
+  }
+
+  &:hover{
+    box-shadow:
+      -1px -1px 1px var( --background_dark ),
+      0 0 0 4px var( --focus ),
+      1px  1px 1px var( --background_dark ),
+      inset 0 0 0 var( --overlay_dark ),
+      inset .5rem .5rem .25rem var( --background_light );
+  }
+
+  &:active{
+    box-shadow:
+      inset 1px 1px 1px var( --background ),
+      0 0 0 4px var( --overlay_dark ),
+      inset -1px -1px 1px var( --background_dark ),    
+      inset .5rem .5rem .75rem var( --background_dark ),
+      inset .5rem .5rem .5rem var( --background_light );
+  }
+}
+
+.mainButton {
+  @extend .button;
+  width: 100px;
+  border-radius: 50px;
+}
+
+.startButton {
+  --background: #E44E55;
+  --background_light: #E47479;
+  --background_dark: #D13239;
+
+  @extend .button;
+  width: 500px;
+  border-radius: 50px;
+}
