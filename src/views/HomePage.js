@@ -14,6 +14,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className={styles.homePage_container}>
+        5/10/15/30/60
         <Button onClick={ this.goToGamePage } title='CLICK TO START!' className={buttonStyles.startButton}/>
       </div>
     );

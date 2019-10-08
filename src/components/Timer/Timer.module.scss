@@ -1,0 +1,23 @@
+.timersContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  box-sizing: border-box;
+  height: 10em;
+  width: 100vw;
+  font-weight: bolder;
+  font-size: 20px;
+
+  &__digits {
+    position: relative;
+    color: red;
+  }
+
+  &__counter {
+    
+    &_visible { display: block }
+
+    &_hide { display: none }
+  }
+}

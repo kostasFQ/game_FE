@@ -1,10 +1,9 @@
 import React from 'react';
 
-const Counter = ({ clicks }) => {
-  return (
-    <div >{ clicks }
-    </div>
-  );
-}
+const Counter = ({ clicks }) => (
+  <div>
+    you click { clicks } times
+  </div>
+)
 
 export default Counter;

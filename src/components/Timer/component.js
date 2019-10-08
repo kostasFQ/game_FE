@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import cn from 'classnames';
+import styles from './Timer.module.scss';
 
 class Timer extends Component {
   state = {
@@ -35,8 +37,14 @@ class Timer extends Component {
 
   render() {
     const { seconds } = this.state;
+    const { game: { gameOver, gameStarted } } = this.props;
+
     return (
-      <div>{seconds} seconds remain</div>
+      <div className={styles.timersContainer}>
+        <div className={cn(gameStarted && !gameOver ? styles.timersContainer__counter_visible : styles.timersContainer__counter_hide )}>
+          <span className={styles.timersContainer__digits}>{ seconds }</span> seconds remain
+        </div>
+      </div>
     );
   }
 }
