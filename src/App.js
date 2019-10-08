@@ -6,7 +6,6 @@ import NotFoundPage from 'views/NotFoundPage';
 import GamePage from 'views/GamePage/container';
 import HomePage from 'views/HomePage';
 import LoginPage from 'views/LoginPage';
-import RegistrationPage from 'views/RegistrationPage';
 import Timer from 'components/Timer/container';
 
 
@@ -19,7 +18,6 @@ function App(props) {
         <Switch>
           <Route path='/' exact component={HomePage} />
           <Route path='/login' component={LoginPage} />
-          <Route path='/register' component={RegistrationPage} />
           <Route path='/game' component={GamePage} />
           <Route component={NotFoundPage} />
         </Switch>
