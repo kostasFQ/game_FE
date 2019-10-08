@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
-import MainButtom from 'components/Buttons/MainButton/component';
-import StartButtom from 'components/Buttons/StartButton/component';
+import Button from 'components/Buttons/Button/component';
 import styles from './assets/HomePage.module.scss';
+import { withRouter } from 'react-router-dom';
+import buttonStyles from 'components/Buttons/Buttons.module.scss';
 
 class HomePage extends Component {
-  state = {
-    clicks: 0
-  }
 
-  increment = () => {
-    this.setState((state) => ({ clicks: state.clicks + 1 }) );
+  goToGamePage = () => {
+    const { history } = this.props;
+    history.push('/game');
   }
 
   render() {
-    const { clicks } = this.state;
     return (
       <div className={styles.homePage_container}>
-        <div>you clicked { clicks } times</div>
-        <MainButtom onClick={ this.increment } />
-        <StartButtom onClick={ this.increment } />
+        <Button onClick={ this.goToGamePage } title='CLICK TO START!' className={buttonStyles.startButton}/>
       </div>
     );
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);

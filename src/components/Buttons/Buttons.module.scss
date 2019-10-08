@@ -74,6 +74,28 @@
   --background_dark: #D13239;
 
   @extend .button;
-  width: 500px;
+  width: 320px;
+  border-radius: 50px;
+}
+
+.restartButton {
+  --background: #E44E55;
+  --background_light: #E47479;
+  --background_dark: #D13239;
+
+  @extend .button;
+  width: 200px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.submitButton {
+  --background: rgb(94, 181, 221);
+  --background_light: rgb(167, 219, 243);
+  --background_dark: rgb(62, 212, 250);
+
+  @extend .button;
+  width: 200px;
+  height: 50px;
   border-radius: 50px;
 }
