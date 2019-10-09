@@ -1,8 +1,11 @@
 import React from 'react';
+import styles from './Counter.module.scss';
 
 const Counter = ({ clicks }) => (
-  <div>
-    you click { clicks } times
+  <div className={styles.counter}>
+    <div>you click</div>
+    <div className={styles.counter__digit}>{ clicks }</div>
+    <div>times</div>
   </div>
 )
 

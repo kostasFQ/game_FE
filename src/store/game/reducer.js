@@ -1,9 +1,10 @@
-import { TOGGLE_START_GAME, TOGGLE_END_GAME, SAVE_COUNT } from './actions';
+import { TOGGLE_START_GAME, TOGGLE_END_GAME, SAVE_COUNT, SET_GAME_TIMER } from './actions';
 
 const initialState = {
   gameStarted: false,
   gameOver: false,
-  totalCount: 0
+  totalCount: 0,
+  initialTime: 15
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +24,11 @@ const reducer = (state = initialState, action) => {
           ...state,
           totalCount: action.payload
         }
+       case SET_GAME_TIMER:
+         return {
+           ...state,
+           initialTime: action.payload
+         } 
     default:
       return state;
   }

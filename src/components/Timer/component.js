@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import cn from 'classnames';
+import { withRouter } from 'react-router-dom';
 import styles from './Timer.module.scss';
 
 class Timer extends Component {
   state = {
-    seconds: 5,
+    seconds: undefined,
+    id: undefined
   }
 
   timerRun() {
@@ -19,10 +21,12 @@ class Timer extends Component {
     clearInterval(this.interval);
   }
 
-  componentDidUpdate(prevProps) {
-    const { seconds } = this.state;
+  componentDidUpdate(prevProps, prevState) {
+    const { seconds, id } = this.state;
+
     const { game: { gameStarted: prevGameStarted } } = prevProps;
-    const { game: { gameOver, gameStarted }, toggleGameOver } = this.props;
+    const { game: { gameOver, gameStarted }, toggleGameOver, setGameTimer, location: { pathname } } = this.props;
+    const [, , sec] = pathname.split('/');
 
     if (gameStarted && !gameOver && gameStarted !== prevGameStarted) {
       this.timerRun();
@@ -31,7 +35,12 @@ class Timer extends Component {
     if (gameStarted && seconds === 0 && !gameOver) {
       clearInterval(this.interval);
       toggleGameOver(true);
-      this.setState(() => ({ seconds: 5 }));
+      this.setState(() => ({ seconds: sec }));
+      setGameTimer(sec);
+    }
+
+    if (pathname && pathname.includes('game') && id !== sec ) {
+      this.setState(() => ({ seconds: sec, id: sec }))
     }
   }
 
@@ -41,12 +50,12 @@ class Timer extends Component {
 
     return (
       <div className={styles.timersContainer}>
-        <div className={cn(gameStarted && !gameOver ? styles.timersContainer__counter_visible : styles.timersContainer__counter_hide )}>
-          <span className={styles.timersContainer__digits}>{ seconds }</span> seconds remain
+        <div className={cn(gameStarted && !gameOver ? styles.timersContainer__counter_visible : styles.timersContainer__counter_hide)}>
+          <span className={styles.timersContainer__digits}>{seconds}</span> seconds remain
         </div>
       </div>
     );
   }
 }
 
-export default Timer;
+export default withRouter(Timer);

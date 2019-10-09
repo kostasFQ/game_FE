@@ -19,12 +19,11 @@ class Countdown extends Component {
 
   componentDidUpdate() {
     const { secondsToStart } = this.state;
-    const { toggleGameStarted, toggleGameOver } = this.props;
+    const { toggleGameStarted } = this.props;
 
     if (secondsToStart === 0) {
       clearInterval(this.interval);
       toggleGameStarted(true);
-      toggleGameOver(false);
     }
   }
 
