@@ -3,24 +3,22 @@
     
     &__checkboxes {
       display: flex;
-      text-align: center;
-      justify-content: center;
       height: 50px;
       
       &__item {
-        margin: 5px;
+        width: 20%;
         cursor: pointer;
         outline: none;
         border: none;
         transition: 0.5s;
-  
-    
+        font-family: 'Saira', sans-serif;
+        font-size: 2rem;
+        
         &_active {
           color: red;
-          font-size: 2rem;
+          font-size: 3.5rem;
         }
       }
     }
   }
-
 }

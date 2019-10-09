@@ -26,7 +26,7 @@ class Timer extends Component {
 
     const { game: { gameStarted: prevGameStarted } } = prevProps;
     const { game: { gameOver, gameStarted }, toggleGameOver, setGameTimer, location: { pathname } } = this.props;
-    const [, , sec] = pathname.split('/');
+    let [, , sec] = pathname.split('/');
 
     if (gameStarted && !gameOver && gameStarted !== prevGameStarted) {
       this.timerRun();
@@ -35,12 +35,19 @@ class Timer extends Component {
     if (gameStarted && seconds === 0 && !gameOver) {
       clearInterval(this.interval);
       toggleGameOver(true);
-      this.setState(() => ({ seconds: sec }));
-      setGameTimer(sec);
+      if (sec < 5) {
+        this.setState(() => ({ seconds: 5 }));
+        setGameTimer(5);
+      } else {
+        this.setState(() => ({ seconds: sec }));
+        setGameTimer(sec);
+      }
     }
 
-    if (pathname && pathname.includes('game') && id !== sec ) {
-      this.setState(() => ({ seconds: sec, id: sec }))
+    if (pathname && pathname.includes('game') && id !== sec) {
+      sec < 5 ?
+        this.setState(() => ({ seconds: 1, id: sec })) : // return to 5
+        this.setState(() => ({ seconds: sec, id: sec }));
     }
   }
 

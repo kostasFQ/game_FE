@@ -1,0 +1,58 @@
+.finalCount {
+  &__container {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    
+    &__result {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 60%;
+
+      &_text {
+        font-family: 'Otribon', sans-serif;
+      }
+      
+      &_digits {
+        display: flex;
+        align-items: center;
+        font-family: 'Saira', sans-serif;
+        height: 100%;
+        font-size: 38vh;
+        font-weight: bolder;
+        color: rgba(253, 86, 86, 0.527);
+      }
+    }
+
+    &__form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &_input {
+        text-align: center;
+        font-size: 1.5em;
+        border-top: none; 
+        border-left: none; 
+        border-right: none;
+        font-family: 'Otribon', sans-serif;
+
+        &_error {
+          border-bottom: solid red 1px;
+          &::placeholder {
+            color: red;
+          }
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

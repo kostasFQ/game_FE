@@ -15,6 +15,7 @@ class SetTimer extends Component {
 
   render() {
     const { game: { gameStarted, gameOver, initialTime } } = this.props;
+    
     return (
       <form onClick={this.select} className={styles.setTimers__container}>
         <div>select how many seconds you want</div>
