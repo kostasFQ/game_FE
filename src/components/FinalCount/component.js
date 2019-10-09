@@ -21,7 +21,7 @@ class FinalCount extends PureComponent {
     const { game: { totalCount = 0 } } = this.props;
     const { value } = this.state;
 
-    if (value.length === 0 ) {
+    if (value.length === 0) {
       this.setState(() => ({ error: true }));
       return;
     }
@@ -45,16 +45,16 @@ class FinalCount extends PureComponent {
       <div className={styles.finalCount__container}>
         <div className={styles.finalCount__container__result}>
           <span className={styles.finalCount__container__result_text}>You have</span>
-          <div className={styles.finalCount__container__result_digits}>{ totalCount }</div>
+          <div className={styles.finalCount__container__result_digits}>{totalCount}</div>
           <span className={styles.finalCount__container__result_text}>
-            { totalCount.toString().match(/^1$/) ? 'point' : 'points' }
+            {totalCount.toString().match(/^1$/) ? 'point' : 'points'}
           </span>
         </div>
         <form onSubmit={this.submitForm} className={styles.finalCount__container__form}>
           so, you can
           <input placeholder="Enter your name here" onChange={this.fillField}
             className={cn(styles.finalCount__container__form_input,
-                          { [styles.finalCount__container__form_input_error]: error }
+              { [styles.finalCount__container__form_input_error]: error }
             )}
           />
           - and -
