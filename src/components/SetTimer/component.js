@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import cn from 'classnames';
+import PropTypes from 'prop-types';
 import styles from './SetTimers.module.scss';
-
-const seconds = [5, 10, 15, 30, 60];
+import seconds from 'assets/helpers/secondsArray';
 
 class SetTimer extends Component {
 
@@ -35,4 +34,17 @@ class SetTimer extends Component {
   }
 }
 
-export default withRouter(SetTimer);
+SetTimer.defaultProps = {
+  gameStarted: undefined,
+  gameOver: undefined,
+  initialTime: undefined,
+};
+
+SetTimer.propTypes = {
+  gameStarted: PropTypes.bool,
+  gameOver: PropTypes.bool,
+  initialTime: PropTypes.number,
+  setGameTimer: PropTypes.func.isRequired,
+}
+
+export default SetTimer;

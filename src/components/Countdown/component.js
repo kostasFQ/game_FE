@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Countdown extends Component {
   state = {
@@ -33,6 +34,10 @@ class Countdown extends Component {
       <div >start from {secondsToStart} seconds</div>
     );
   }
+}
+
+Countdown.propTypes = {
+  toggleGameStarted: PropTypes.func.isRequired,
 }
 
 export default Countdown;

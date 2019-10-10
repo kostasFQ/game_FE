@@ -3,7 +3,7 @@
     
     &__checkboxes {
       display: flex;
-      height: 50px;
+      height: 70px;
       
       &__item {
         width: 20%;
@@ -12,11 +12,11 @@
         border: none;
         transition: 0.5s;
         font-family: 'Saira', sans-serif;
-        font-size: 2rem;
+        font-size: 2em;
         
         &_active {
           color: red;
-          font-size: 3.5rem;
+          font-size: 3em;
         }
       }
     }

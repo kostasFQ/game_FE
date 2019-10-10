@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import cn from 'classnames';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styles from './Timer.module.scss';
 
 class Timer extends Component {
@@ -21,11 +22,10 @@ class Timer extends Component {
     clearInterval(this.interval);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { seconds, id } = this.state;
-
-    const { game: { gameStarted: prevGameStarted } } = prevProps;
     const { game: { gameOver, gameStarted }, toggleGameOver, setGameTimer, location: { pathname } } = this.props;
+    const { game: { gameStarted: prevGameStarted } } = prevProps;
     let [, , sec] = pathname.split('/');
 
     if (gameStarted && !gameOver && gameStarted !== prevGameStarted) {
@@ -35,19 +35,13 @@ class Timer extends Component {
     if (gameStarted && seconds === 0 && !gameOver) {
       clearInterval(this.interval);
       toggleGameOver(true);
-      if (sec < 5) {
-        this.setState(() => ({ seconds: 5 }));
-        setGameTimer(5);
-      } else {
-        this.setState(() => ({ seconds: sec }));
-        setGameTimer(sec);
-      }
+
+      this.setState(() => ({ seconds: id }));
+      setGameTimer(id);
     }
 
     if (pathname && pathname.includes('game') && id !== sec) {
-      sec < 5 ?
-        this.setState(() => ({ seconds: 1, id: sec })) : // return to 5
-        this.setState(() => ({ seconds: sec, id: sec }));
+      this.setState(() => ({ seconds: sec, id: sec }));
     }
   }
 
@@ -63,6 +57,20 @@ class Timer extends Component {
       </div>
     );
   }
+}
+
+Timer.defaultProps = {
+  gameStarted: true || false,
+  gameOver: true || false,
+  pathname: '',
+};
+
+Timer.propTypes = {
+  gameStarted: PropTypes.bool,
+  gameOver: PropTypes.bool,
+  pathname: PropTypes.string,
+  setGameTimer: PropTypes.func.isRequired,
+  toggleGameOver: PropTypes.func.isRequired,
 }
 
 export default withRouter(Timer);

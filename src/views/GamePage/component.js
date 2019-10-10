@@ -15,6 +15,21 @@ class GamePage extends PureComponent {
     this.setState((state) => ({ clicks: state.clicks + 1 }));
   }
 
+  componentDidMount() {
+    const { clicks } = this.state;
+    const { game: { totalCount } } = this.props;
+    if (clicks === 0 && totalCount !== 0) {
+      this.setState(() => ({ clicks: totalCount }));
+    }
+
+  }
+
+  componentWillUnmount() {
+    const { clicks } = this.state;
+    const { saveCount } = this.props;
+    saveCount(clicks);
+  }
+
   componentDidUpdate(prevProps) {
     const { clicks } = this.state;
     const { saveCount, game: { gameOver } } = this.props;

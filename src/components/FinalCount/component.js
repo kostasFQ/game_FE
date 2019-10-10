@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import cn from 'classnames';
+import PropTypes from 'prop-types';
 import Button from 'components/Buttons/Button/component';
 import buttonStyles from 'components/Buttons/Buttons.module.scss';
 import styles from './FinalCount.module.scss';
-// import axios from 'axios';
+import { saveResult } from 'api/urls';
+import axios from 'axios';
 
 class FinalCount extends PureComponent {
   state = { value: '', error: false };
@@ -26,10 +28,9 @@ class FinalCount extends PureComponent {
       return;
     }
     this.setState(() => ({ error: false }));
-
-    // const { data } = await axios.post('http://localhost:9000/', { data: totalCount });
-    // console.log(`data - ${data}`)
-    console.log({ name: value, score: totalCount })
+    const { data: { response, status } } = await axios.post(saveResult(), { name: value, score: totalCount });
+    console.log(`response - ${response}`)
+    console.log(`status - ${status}`)
   }
 
   fillField = e => {
@@ -38,17 +39,20 @@ class FinalCount extends PureComponent {
   }
 
   render() {
-    const { game: { totalCount = 0 }, history } = this.props;
+    const { game: { totalCount = 0, initialTime }, history } = this.props;
     const { error } = this.state;
-
+    
     return (
       <div className={styles.finalCount__container}>
         <div className={styles.finalCount__container__result}>
           <span className={styles.finalCount__container__result_text}>You have</span>
           <div className={styles.finalCount__container__result_digits}>{totalCount}</div>
           <span className={styles.finalCount__container__result_text}>
-            {totalCount.toString().match(/^1$/) ? 'point' : 'points'}
+            {totalCount.toString().match(/^1$/) ? 'point ' : 'points '}
+            for&nbsp;
+            {initialTime} {initialTime.toString().match(/^1$/) ? ' second' : ' seconds'}
           </span>
+          <div className={styles.finalCount__container__result_text}>it's {totalCount/initialTime} clicks per second</div>
         </div>
         <form onSubmit={this.submitForm} className={styles.finalCount__container__form}>
           so, you can
@@ -66,7 +70,18 @@ class FinalCount extends PureComponent {
       </div>
     )
   }
-
 };
+
+FinalCount.defaultProps = {
+  totalCount: 0,
+};
+
+FinalCount.propTypes = {
+  totalCount: PropTypes.number,
+  saveCount: PropTypes.func.isRequired,
+  toggleGameOver: PropTypes.func.isRequired,
+  toggleGameStarted: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired
+}
 
 export default withRouter(FinalCount);

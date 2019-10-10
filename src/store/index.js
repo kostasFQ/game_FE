@@ -1,10 +1,8 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import user from './user/reducer';
 import game from './game/reducer';
 
 const store = combineReducers({
-  user,
   game
 });
 

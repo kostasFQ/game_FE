@@ -1,17 +1,18 @@
 .finalCount {
   &__container {
-    height: 70vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    
+
     &__result {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       height: 60%;
+      margin-bottom: 30px;
 
       &_text {
         font-family: 'Otribon', sans-serif;
@@ -21,15 +22,15 @@
         display: flex;
         align-items: center;
         font-family: 'Saira', sans-serif;
-        height: 100%;
-        font-size: 38vh;
+        height: 90%;
+        font-size: 35vh;
         font-weight: bolder;
         color: rgba(253, 86, 86, 0.527);
       }
     }
 
     &__form {
-      width: 100%;
+      width: 90%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -41,16 +42,14 @@
         border-left: none; 
         border-right: none;
         font-family: 'Otribon', sans-serif;
+        outline: none;
+
 
         &_error {
           border-bottom: solid red 1px;
           &::placeholder {
-            color: red;
+            color: rgba(255, 0, 0, 0.548);
           }
-        }
-
-        &:focus {
-          outline: none;
         }
       }
     }
