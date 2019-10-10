@@ -1,0 +1,21 @@
+.notFound {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: flex-start;
+    align-items: center;
+    border: solid red 1px;
+
+    &__text {
+      font-family: 'Otribon', sans-serif;
+      font-size: 3vh;
+    }
+    
+    &__status {
+      font-size: 40vh;
+      color: rgba(253, 86, 86, 0.527);
+      font-family: 'Saira', sans-serif;
+    }
+  }
+}

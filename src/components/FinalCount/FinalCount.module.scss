@@ -44,13 +44,16 @@
         font-family: 'Otribon', sans-serif;
         outline: none;
 
-
         &_error {
           border-bottom: solid red 1px;
           &::placeholder {
             color: rgba(255, 0, 0, 0.548);
           }
         }
+      }
+
+      &_errorMessage {
+        color: rgba(255, 0, 0, 0.548);
       }
     }
   }

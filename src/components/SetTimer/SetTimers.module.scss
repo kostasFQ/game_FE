@@ -4,15 +4,13 @@
     &__checkboxes {
       display: flex;
       height: 70px;
-      border: solid 1px red;
       width: 300px;
       
       &__item {
-      border: solid 1px green;
         width: 20%;
         cursor: pointer;
         outline: none;
-        // border: none;
+        border: none;
         transition: 0.5s;
         font-family: 'Saira', sans-serif;
         font-size: 2em;

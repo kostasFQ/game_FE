@@ -8,7 +8,7 @@ import styles from './FinalCount.module.scss';
 import { saveResultUrl } from 'api/urls';
 
 class FinalCount extends PureComponent {
-  state = { value: '', error: false };
+  state = { value: '', error: false, errorText: undefined };
 
   restart = () => {
     const { saveCount, toggleGameOver, toggleGameStarted } = this.props;
@@ -18,24 +18,28 @@ class FinalCount extends PureComponent {
   }
 
   submitForm = async e => {
-    e.preventDefault();
-    const { game: { totalCount = 0, initialTime }, makeCall, history } = this.props;
-    const { value } = this.state;
-    const body = {
-      name: value,
-      score: totalCount,
-      average: (totalCount / initialTime).toFixed(1),
-      seconds: initialTime
+    try {
+      e.preventDefault();
+      const { game: { totalCount = 0, initialTime }, makeCall, history } = this.props;
+      const { value } = this.state;
+      const body = {
+        name: value,
+        score: totalCount,
+        average: (totalCount / initialTime).toFixed(1),
+        seconds: initialTime
+      }
+      const { data: { error } } = await makeCall(saveResultUrl(), body);
+  
+      if (error) {
+        this.setState(() => ({ error: true, errorText: error }));
+        return;
+      }
+  
+      this.setState(() => ({ error: false, errorText: undefined }));
+      history.push('/');
+    } catch(err) {
+      console.log(err.message);
     }
-
-    if (value.length === 0) {
-      this.setState(() => ({ error: true }));
-      return;
-    }
-
-    this.setState(() => ({ error: false }));
-    await makeCall(saveResultUrl(), body);
-    history.push('/');
   }
 
   fillField = e => {
@@ -45,7 +49,7 @@ class FinalCount extends PureComponent {
 
   render() {
     const { game: { totalCount = 0, initialTime }, history } = this.props;
-    const { error } = this.state;
+    const { error, errorText } = this.state;
 
     return (
       <div className={styles.finalCount__container}>
@@ -60,12 +64,13 @@ class FinalCount extends PureComponent {
           <div className={styles.finalCount__container__result_text}>it's {(totalCount / initialTime).toFixed(1)} clicks per second</div>
         </div>
         <form onSubmit={this.submitForm} className={styles.finalCount__container__form}>
-          so, you can
-          <input placeholder="Enter your name here" onChange={this.fillField}
+          so, you can enter your name
+          <input placeholder="" onChange={this.fillField}
             className={cn(styles.finalCount__container__form_input,
               { [styles.finalCount__container__form_input_error]: error }
             )}
           />
+          {!!errorText && <span className={styles.finalCount__container__form_errorMessage}>{errorText}</span>}
           - and -
           <Button type='submit' title='SUBMIT' className={buttonStyles.submitButton} />
         </form>

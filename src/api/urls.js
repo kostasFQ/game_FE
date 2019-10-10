@@ -5,4 +5,4 @@ const url = () => {
 }
 
 export const saveResultUrl = () => `${url()}/save`;
-export const leaderBoard = () => `${url()}/leader-board`;
+export const leaderBoard = (count = 5) => `${url()}/leader-board?count=${count}`;

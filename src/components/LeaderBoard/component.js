@@ -3,23 +3,35 @@ import { leaderBoard } from 'api/urls';
 import styles from './LeaderBoard.module.scss';
 
 class LeaderBoard extends PureComponent {
-  state = { list: [], tableHeaders: [] }
+  state = { list: [], tableHeaders: [], loading: false }
 
   componentDidMount() {
     this.getLeaders();
   }
 
   getLeaders = async () => {
-    const { makeCall, size } = this.props;
-    const { data } = await makeCall(leaderBoard());
-    const list = data.slice(0, size);
-    const tableHeaders = Object.keys(list[0]).slice(1, 5);
-    tableHeaders.unshift('#');
-    this.setState(() => ({ list, tableHeaders }));
+    try {
+      const { makeCall, size } = this.props;
+      this.setState(() => ({ loading: true }));
+      const { data: { response: list } } = await makeCall(leaderBoard(size));
+      const tableHeaders = Object.keys(list[0]).slice(1, 5);
+      tableHeaders.unshift('#');
+      this.setState(() => ({ list, tableHeaders, loading: false }));
+    } catch(err) {
+      console.log(err.message);
+    }
   }
 
   render() {
-    const { list, tableHeaders } = this.state;
+    const { list, tableHeaders, loading } = this.state;
+
+    if ( loading ) {
+      console.log('loading')
+      return (
+        <h3>Loading...</h3>
+      )
+    }
+
     return (
       <Fragment>
         <table className={styles.leaderBoard__table}>

@@ -23,7 +23,7 @@ class HomePage extends Component {
         <SetTimer />
         <Button
           onClick={this.goToGamePage}
-          title='CLICK TO START!'
+          title='START!'
           className={buttonStyles.startButton}
           disabled={gameStarted && !gameOver}
         />
