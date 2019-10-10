@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import Button from 'components/Buttons/Button/component';
 import buttonStyles from 'components/Buttons/Buttons.module.scss';
 import styles from './FinalCount.module.scss';
-import { saveResult } from 'api/urls';
-import axios from 'axios';
+import { saveResultUrl } from 'api/urls';
 
 class FinalCount extends PureComponent {
   state = { value: '', error: false };
@@ -20,17 +19,23 @@ class FinalCount extends PureComponent {
 
   submitForm = async e => {
     e.preventDefault();
-    const { game: { totalCount = 0 } } = this.props;
+    const { game: { totalCount = 0, initialTime }, makeCall, history } = this.props;
     const { value } = this.state;
+    const body = {
+      name: value,
+      score: totalCount,
+      average: (totalCount / initialTime).toFixed(1),
+      seconds: initialTime
+    }
 
     if (value.length === 0) {
       this.setState(() => ({ error: true }));
       return;
     }
+
     this.setState(() => ({ error: false }));
-    const { data: { response, status } } = await axios.post(saveResult(), { name: value, score: totalCount });
-    console.log(`response - ${response}`)
-    console.log(`status - ${status}`)
+    await makeCall(saveResultUrl(), body);
+    history.push('/');
   }
 
   fillField = e => {
@@ -41,7 +46,7 @@ class FinalCount extends PureComponent {
   render() {
     const { game: { totalCount = 0, initialTime }, history } = this.props;
     const { error } = this.state;
-    
+
     return (
       <div className={styles.finalCount__container}>
         <div className={styles.finalCount__container__result}>
@@ -52,7 +57,7 @@ class FinalCount extends PureComponent {
             for&nbsp;
             {initialTime} {initialTime.toString().match(/^1$/) ? ' second' : ' seconds'}
           </span>
-          <div className={styles.finalCount__container__result_text}>it's {totalCount/initialTime} clicks per second</div>
+          <div className={styles.finalCount__container__result_text}>it's {(totalCount / initialTime).toFixed(1)} clicks per second</div>
         </div>
         <form onSubmit={this.submitForm} className={styles.finalCount__container__form}>
           so, you can

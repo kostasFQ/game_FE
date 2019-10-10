@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Counter = ({ clicks }) => (
   <div className={styles.counter}>
-    <div>your points</div>
+    <div>YOU CLICK</div>
     <div className={styles.counter__digit}>{ clicks }</div>
     <div>times</div>
   </div>
