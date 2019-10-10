@@ -15,7 +15,7 @@ class LeaderBoard extends PureComponent {
       this.setState(() => ({ loading: true }));
       const { data: { response: list } } = await makeCall(leaderBoard(size));
       const tableHeaders = Object.keys(list[0]).slice(1, 5);
-      tableHeaders.unshift('#');
+      tableHeaders.unshift('place');
       this.setState(() => ({ list, tableHeaders, loading: false }));
     } catch(err) {
       console.log(err.message);
