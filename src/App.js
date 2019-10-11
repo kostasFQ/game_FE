@@ -4,10 +4,12 @@ import NotFoundPage from 'views/NotFoundPage';
 import GamePage from 'views/GamePage/container';
 import HomePage from 'views/HomePage/container';
 import Timer from 'components/Timer/container';
+import Title from 'components/Title/component';
 
 function App() {
   return (
     <Fragment>
+      <Title />
       <Router>
         <Timer />
         <Switch>

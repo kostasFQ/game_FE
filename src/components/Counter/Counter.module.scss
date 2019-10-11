@@ -8,17 +8,18 @@
   height: 55%;
   width: 100vw;
   font-family: 'Otribon', sans-serif;
-  font-weight: bolder;
   font-size: 1.5vh;
+  border: solid red 1px;
   
   &__digit {
+    font-weight: bolder;
     height: 90%;
-    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 55vh;
     color: rgba(253, 86, 86, 0.527);
     font-family: 'Saira', sans-serif;
+  border: solid green 1px;
   }
 }
