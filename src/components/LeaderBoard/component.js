@@ -39,7 +39,7 @@ class LeaderBoard extends PureComponent {
     return (
       <Fragment>
         <table className={styles.leaderBoard__table} border='1'>
-          <caption><h3>{ list.length !== 0 && 'Leaders' }</h3></caption>
+          <caption><h3>{ list.length !== 0 && 'TOP 10' }</h3></caption>
           <thead>
             <tr >
               {tableHeaders.map(i => (<th key={i} className={cn(i === 'average' && styles.leaderBoard__table__average)} >{i.toUpperCase()}</th>))}
@@ -59,7 +59,12 @@ class LeaderBoard extends PureComponent {
             }
           </tbody>
         </table>
-        { userPlace && <div>{userName}, your place is <span className={styles.leaderBoard__table__average}>{userPlace}</span></div> }
+        {
+          userPlace &&
+          <div className={styles.leaderBoard__table__userPlace}>
+            {userName}, your place is <span className={styles.leaderBoard__table__average}>{userPlace}</span>
+          </div>
+        }
       </Fragment>
     )
   }
