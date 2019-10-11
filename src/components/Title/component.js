@@ -3,9 +3,9 @@ import styles from './Title.module.scss';
 
 const Title = () => (
   <div className={styles.title__container}>
-  <div className={styles.title__container__text}>
-    clicatron3000
-  </div>
+    <div className={styles.title__container__text}>
+      clickatron3000
+    </div>
   </div>
 )
 
