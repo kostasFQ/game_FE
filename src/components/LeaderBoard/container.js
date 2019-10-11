@@ -4,6 +4,11 @@ import makeCall from 'api/call';
 
 const mapDispatchToProps = () => ({
   makeCall: url => makeCall(url)
-})
+});
 
-export default connect(null, mapDispatchToProps)(LeaderBoard);
+
+const mapStateToProps = state => ({
+  game: state.game,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LeaderBoard);

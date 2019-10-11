@@ -20,21 +20,22 @@ class FinalCount extends PureComponent {
   submitForm = async e => {
     try {
       e.preventDefault();
-      const { game: { totalCount = 0, initialTime }, makeCall, history } = this.props;
+      const { game: { totalCount = 0, initialTime }, makeCall, history, setUserPlace, setUserName } = this.props;
       const { value } = this.state;
       const body = {
         name: value,
-        score: totalCount,
-        average: (totalCount / initialTime).toFixed(1),
-        seconds: initialTime
+        score: Number(totalCount),
+        average: Number((totalCount / initialTime).toFixed(1)),
+        seconds: Number(initialTime)
       }
-      const { data: { error } } = await makeCall(saveResultUrl(), body);
-  
+      const { data: { error, response } } = await makeCall(saveResultUrl(), body);
+      
       if (error) {
         this.setState(() => ({ error: true, errorText: error }));
         return;
       }
-  
+      setUserPlace(response);
+      setUserName(value);
       this.setState(() => ({ error: false, errorText: undefined }));
       history.push('/');
     } catch(err) {

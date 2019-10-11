@@ -1,4 +1,4 @@
-import { TOGGLE_START_GAME, TOGGLE_END_GAME, SAVE_COUNT, SET_GAME_TIMER } from './actions';
+import { TOGGLE_START_GAME, TOGGLE_END_GAME, SAVE_COUNT, SET_GAME_TIMER, SET_USER_PLACE, SET_USER_NAME } from './actions';
 
 const initialState = {
   gameStarted: false,
@@ -28,7 +28,17 @@ const reducer = (state = initialState, action) => {
          return {
            ...state,
            initialTime: action.payload
-         } 
+          } 
+       case SET_USER_PLACE:
+         return {
+           ...state,
+           userPlace: action.payload
+          } 
+       case SET_USER_NAME:
+         return {
+           ...state,
+           userName: action.payload
+          } 
     default:
       return state;
   }

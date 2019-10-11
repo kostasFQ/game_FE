@@ -12,7 +12,7 @@ function App() {
         <Timer />
         <Switch>
           <Route path='/' exact component={HomePage} />
-          <Route path='/game/:time(\d+)' children={<GamePage />} />
+          <Route path='/game/:time(5|10|15|30|60)' children={<GamePage />} />
           <Route component={NotFoundPage} />
         </Switch>
       </Router>

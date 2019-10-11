@@ -2,7 +2,19 @@
   &__table {
     width: 80%;
     text-align: center;
-    color: rgba(253, 86, 86, 0.7);
+    color: rgba(119, 115, 115, 0.7);
     font-size: 0.8em;
+    border-collapse: collapse;
+    border: solid 1px transparent;
+
+    &__average {
+      color: rgba(255, 0, 0, 0.548);
+    }
+
+    &__div {
+      border-top: solid red 1px;
+      border-bottom: solid red 1px;
+      background-color: rgba(250, 158, 158, 0.336);
+    }
   }
 }
