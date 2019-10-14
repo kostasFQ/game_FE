@@ -54,13 +54,13 @@ test('Inputs value was change', () => {
 test('Submitting form', () => {
   const testInstance = instance.root;
   const form = testInstance.findByType('form');
-  const e = { preventDefault: () => {} };
+  const e = { preventDefault: jest.fn( x => 'mock') };
   form.props.onSubmit(e);
 })
 
 test('Catch error', () => {
   const testInstance = instance.root;
-  const mockFoo = jest.fn( x => new Error())
+  const e = { preventDefault: jest.fn( x => new Error()) }
   const form = testInstance.findByType('form');
-  form.props.onSubmit(mockFoo);
+  form.props.onSubmit(e);
 })

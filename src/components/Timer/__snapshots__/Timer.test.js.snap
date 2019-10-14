@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FinalCount should be render 1`] = `
+<div
+  className="timersContainer"
+>
+  <div
+    className="timersContainer__counter_hide"
+  >
+    <span
+      className="timersContainer__digits"
+    />
+     seconds remain
+  </div>
+</div>
+`;

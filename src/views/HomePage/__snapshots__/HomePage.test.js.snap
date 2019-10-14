@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FinalCount should be render 1`] = `
+<div
+  className="homePage_container"
+>
+  <div>
+    select how many seconds you want
+  </div>
+  <form
+    className="setTimers__container"
+    onClick={[Function]}
+  >
+    <div
+      className="setTimers__container__checkboxes"
+    >
+      <input
+        className="setTimers__container__checkboxes__item"
+        disabled={false}
+        name="seconds"
+        type="button"
+        value={5}
+      />
+      <input
+        className="setTimers__container__checkboxes__item"
+        disabled={false}
+        name="seconds"
+        type="button"
+        value={10}
+      />
+      <input
+        className="setTimers__container__checkboxes__item setTimers__container__checkboxes__item_active"
+        disabled={true}
+        name="seconds"
+        type="button"
+        value={15}
+      />
+      <input
+        className="setTimers__container__checkboxes__item"
+        disabled={false}
+        name="seconds"
+        type="button"
+        value={30}
+      />
+      <input
+        className="setTimers__container__checkboxes__item"
+        disabled={false}
+        name="seconds"
+        type="button"
+        value={60}
+      />
+    </div>
+  </form>
+  <button
+    className="startButton"
+    disabled={false}
+    onClick={[Function]}
+  >
+    START!
+  </button>
+  <h3>
+    Loading...
+  </h3>
+</div>
+`;

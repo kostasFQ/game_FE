@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should be render 1`] = `
+<div
+  className="title__container"
+>
+  <div
+    className="title__container__text"
+  >
+    clickatron3000
+  </div>
+</div>
+`;

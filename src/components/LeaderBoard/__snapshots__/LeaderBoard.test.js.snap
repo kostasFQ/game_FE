@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FinalCount should be render 1`] = `
+<h3>
+  Loading...
+</h3>
+`;
