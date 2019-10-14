@@ -19,7 +19,7 @@ class FinalCount extends PureComponent {
   submitForm = async e => {
     try {
       e.preventDefault();
-      const { game: { totalCount = 0, initialTime }, makeCall, history, setUserPlace, setUserName, saveResultUrl } = this.props;
+      const { game: { totalCount, initialTime }, makeCall, history, setUserPlace, setUserName, saveResultUrl } = this.props;
       const { value } = this.state;
       const body = {
         name: value,
@@ -48,18 +48,18 @@ class FinalCount extends PureComponent {
   }
 
   render() {
-    const { game: { totalCount = 0, initialTime }, history } = this.props;
+    const { game: { totalCount, initialTime }, history } = this.props;
     const { error, errorText } = this.state;
 
     return (
       <div className={styles.finalCount__container}>
         <div className={styles.finalCount__container__result}>
           <span className={styles.finalCount__container__result_text}>You have</span>
-          <div className={styles.finalCount__container__result_digits}>{totalCount}</div>
+          <div className={styles.finalCount__container__result_digits}>{!! totalCount && totalCount}</div>
           <span className={styles.finalCount__container__result_text}>
-            {totalCount.toString().match(/^1$/) ? 'point ' : 'points '}
+            {!!totalCount && totalCount.toString().match(/^1$/) ? 'point ' : 'points '}
             for&nbsp;
-            {initialTime} {initialTime.toString().match(/^1$/) ? ' second' : ' seconds'}
+            {!!initialTime && initialTime} {!!initialTime && initialTime.toString().match(/^1$/) ? ' second' : ' seconds'}
           </span>
           <div className={styles.finalCount__container__result_text}>it's {(totalCount / initialTime).toFixed(1)} clicks per second</div>
         </div>
@@ -84,6 +84,7 @@ class FinalCount extends PureComponent {
 
 FinalCount.defaultProps = {
   totalCount: 0,
+  initialTime: 15
 };
 
 FinalCount.propTypes = {

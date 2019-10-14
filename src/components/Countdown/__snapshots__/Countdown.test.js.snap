@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Countdown should be render 1`] = `
+<div>
+  start from 
+  3
+   seconds
+</div>
+`;

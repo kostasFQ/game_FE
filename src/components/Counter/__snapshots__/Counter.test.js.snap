@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter should be render with 5 clicks 1`] = `
+<div
+  className="counter"
+>
+  <div>
+    YOU CLICK
+  </div>
+  <div
+    className="counter__digit"
+  >
+    5
+  </div>
+  <div>
+    times
+  </div>
+</div>
+`;
+
+exports[`Counter should be render with 10 clicks 1`] = `
+<div
+  className="counter"
+>
+  <div>
+    YOU CLICK
+  </div>
+  <div
+    className="counter__digit"
+  >
+    10
+  </div>
+  <div>
+    times
+  </div>
+</div>
+`;

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FinalCount should be render 1`] = `
+<div
+  className="finalCount__container"
+>
+  <div
+    className="finalCount__container__result"
+  >
+    <span
+      className="finalCount__container__result_text"
+    >
+      You have
+    </span>
+    <div
+      className="finalCount__container__result_digits"
+    />
+    <span
+      className="finalCount__container__result_text"
+    >
+      points 
+      for 
+      15
+       
+       seconds
+    </span>
+    <div
+      className="finalCount__container__result_text"
+    >
+      it's 
+      0.0
+       clicks per second
+    </div>
+  </div>
+  <form
+    className="finalCount__container__form"
+    onSubmit={[Function]}
+  >
+    so, you can enter your name
+    <input
+      className="finalCount__container__form_input"
+      onChange={[Function]}
+      placeholder=""
+    />
+    - and -
+    <button
+      className="submitButton"
+      onClick={[Function]}
+      type="submit"
+    >
+      SUBMIT
+    </button>
+  </form>
+  - or -
+  <button
+    className="restartButton"
+    onClick={[Function]}
+  >
+    RESTART
+  </button>
+  <button
+    className="restartButton"
+    onClick={[Function]}
+  >
+    BACK TO MAIN
+  </button>
+</div>
+`;
