@@ -10,4 +10,5 @@ const store = combineReducers({
 export default createStore(store,
   composeWithDevTools(
     applyMiddleware(thunk),
-  ));
+  )
+);

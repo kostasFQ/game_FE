@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Counter = ({ clicks }) => (
   <div className={styles.counter}>
     <div>YOU CLICK</div>
-    <div className={styles.counter__digit}>{ clicks }</div>
+    <div className={styles.counter__digit}>{clicks}</div>
     <div>times</div>
   </div>
 )

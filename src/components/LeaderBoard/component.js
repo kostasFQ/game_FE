@@ -1,5 +1,4 @@
 import React, { Fragment, PureComponent } from 'react';
-import { leaderBoard } from 'api/urls';
 import cn from 'classnames';
 import styles from './LeaderBoard.module.scss';
 
@@ -12,10 +11,10 @@ class LeaderBoard extends PureComponent {
 
   getLeaders = async () => {
     try {
-      const { makeCall, size } = this.props;
+      const { makeCall, size, leaderBoard } = this.props;
       this.setState(() => ({ loading: true }));
       const { data: { response: list } } = await makeCall(leaderBoard(size));
-      
+
       this.setState(() => ({ loading: false, list }));
     } catch (err) {
       throw new Error(err.message);
@@ -32,7 +31,7 @@ class LeaderBoard extends PureComponent {
       )
     }
 
-    if(list.length !== 0) {
+    if (list.length !== 0) {
       return (
         <Fragment>
           <table className={styles.leaderBoard__table} border='1'>
@@ -49,7 +48,7 @@ class LeaderBoard extends PureComponent {
             <tbody>
               {
                 list.map((i, index) => (
-                  <tr key={i.name} className={ cn(i.name === userName && styles.leaderBoard__table__div )}>
+                  <tr key={i.name} className={cn(i.name === userName && styles.leaderBoard__table__div)}>
                     <td>{index + 1}</td>
                     <td>{i.name}</td>
                     <td>{i.score}</td>

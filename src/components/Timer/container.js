@@ -10,7 +10,6 @@ const mapDispatchToProps = dispatch => ({
   toggleGameStarted: bool => dispatch(toggleGameStarted(bool)),
   toggleGameOver: bool => dispatch(toggleGameOver(bool)),
   setGameTimer: seconds => dispatch(setGameTimer(seconds)),
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timer);

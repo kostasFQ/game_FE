@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import MainButtom from 'components/Buttons/MainButton/component';
 import Counter from 'components/Counter/component';
 import Countdown from 'components/Countdown/container';
@@ -45,9 +46,9 @@ class GamePage extends PureComponent {
     const { clicks } = this.state;
     const { game: { gameStarted, gameOver } } = this.props;
 
-    if (!gameStarted) { return ( <div className={styles.gamePage__container}> <Countdown /> </div> ) }
+    if (!gameStarted) { return (<div className={styles.gamePage__container}> <Countdown /> </div>) }
 
-    if (gameOver) { return ( <div className={styles.gamePage__container}> <FinalCount /> </div> ) }
+    if (gameOver) { return (<div className={styles.gamePage__container}> <FinalCount /> </div>) }
 
     return (
       <div className={styles.gamePage__container}>
@@ -56,6 +57,21 @@ class GamePage extends PureComponent {
       </div>
     );
   }
+}
+
+GamePage.defaultProps = {
+  totalCount: 0,
+  gameStarted: true,
+  gameOver: false,
+  pathname: '',
+};
+
+GamePage.propTypes = {
+  totalCount: PropTypes.number,
+  gameStarted: PropTypes.bool.isRequired,
+  gameOver: PropTypes.bool.isRequired,
+  pathname: PropTypes.string.isRequired,
+  saveCount: PropTypes.func.isRequired,
 }
 
 export default withRouter(GamePage);

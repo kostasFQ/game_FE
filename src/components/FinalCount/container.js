@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import FinalCount from './component';
 import { saveCount, toggleGameStarted, toggleGameOver, setUserPlace, setUserName } from 'store/game/actions';
+import { saveResultUrl } from 'api/urls';
 import makeCall from 'api/call';
 
 const mapDispatchToProps = dispatch => ({
@@ -14,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   game: state.game,
+  saveResultUrl: saveResultUrl
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FinalCount);

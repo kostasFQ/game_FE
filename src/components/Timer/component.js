@@ -60,8 +60,8 @@ class Timer extends Component {
 }
 
 Timer.defaultProps = {
-  gameStarted: true || false,
-  gameOver: true || false,
+  gameStarted: false,
+  gameOver: false,
   pathname: '',
 };
 

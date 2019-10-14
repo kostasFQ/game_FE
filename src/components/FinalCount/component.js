@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import Button from 'components/Buttons/Button/component';
 import buttonStyles from 'components/Buttons/Buttons.module.scss';
 import styles from './FinalCount.module.scss';
-import { saveResultUrl } from 'api/urls';
 
 class FinalCount extends PureComponent {
   state = { value: '', error: false, errorText: undefined };
@@ -20,7 +19,7 @@ class FinalCount extends PureComponent {
   submitForm = async e => {
     try {
       e.preventDefault();
-      const { game: { totalCount = 0, initialTime }, makeCall, history, setUserPlace, setUserName } = this.props;
+      const { game: { totalCount = 0, initialTime }, makeCall, history, setUserPlace, setUserName, saveResultUrl } = this.props;
       const { value } = this.state;
       const body = {
         name: value,
@@ -29,7 +28,7 @@ class FinalCount extends PureComponent {
         seconds: Number(initialTime)
       }
       const { data: { error, response } } = await makeCall(saveResultUrl(), body);
-      
+
       if (error) {
         this.setState(() => ({ error: true, errorText: error }));
         return;
@@ -38,7 +37,7 @@ class FinalCount extends PureComponent {
       setUserName(value);
       this.setState(() => ({ error: false, errorText: undefined }));
       history.push('/');
-    } catch(err) {
+    } catch (err) {
       console.log(err.message);
     }
   }
@@ -90,6 +89,7 @@ FinalCount.defaultProps = {
 FinalCount.propTypes = {
   totalCount: PropTypes.number,
   saveCount: PropTypes.func.isRequired,
+  saveResultUrl: PropTypes.func.isRequired,
   toggleGameOver: PropTypes.func.isRequired,
   toggleGameStarted: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired

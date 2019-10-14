@@ -3,7 +3,6 @@ import { toggleGameStarted, toggleGameOver } from 'store/game/actions';
 import HomePage from './component';
 import makeCall from 'api/call';
 
-
 const mapStateToProps = state => ({
   game: state.game,
 });

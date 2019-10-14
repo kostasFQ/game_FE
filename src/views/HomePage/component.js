@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import Button from 'components/Buttons/Button/component';
-import styles from '../assets/HomePage.module.scss';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Button from 'components/Buttons/Button/component';
 import buttonStyles from 'components/Buttons/Buttons.module.scss';
 import SetTimer from 'components/SetTimer/container';
 import LeaderBoard from 'components/LeaderBoard/container';
+import styles from '../assets/HomePage.module.scss';
 
 class HomePage extends Component {
 
@@ -31,6 +32,21 @@ class HomePage extends Component {
       </div>
     );
   }
+}
+
+HomePage.defaultProps = {
+  initialTime: 0,
+  gameStarted: false,
+  gameOver: false,
+};
+
+HomePage.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  initialTime: PropTypes.number,
+  toggleGameStarted: PropTypes.func.isRequired,
+  toggleGameOver: PropTypes.func.isRequired,
+  gameStarted: PropTypes.bool,
+  gameOver: PropTypes.bool,
 }
 
 export default withRouter(HomePage);

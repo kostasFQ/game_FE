@@ -8,37 +8,37 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-  switch(action.type) {
-     case TOGGLE_START_GAME:
-       return {
-         ...state,
-         gameStarted: action.payload
-       }
-      case TOGGLE_END_GAME: 
-       return {
-         ...state,
-         gameOver: action.payload
-       }
-      case SAVE_COUNT:
-        return {
-          ...state,
-          totalCount: action.payload
-        }
-       case SET_GAME_TIMER:
-         return {
-           ...state,
-           initialTime: action.payload
-          } 
-       case SET_USER_PLACE:
-         return {
-           ...state,
-           userPlace: action.payload
-          } 
-       case SET_USER_NAME:
-         return {
-           ...state,
-           userName: action.payload
-          } 
+  switch (action.type) {
+    case TOGGLE_START_GAME:
+      return {
+        ...state,
+        gameStarted: action.payload
+      }
+    case TOGGLE_END_GAME:
+      return {
+        ...state,
+        gameOver: action.payload
+      }
+    case SAVE_COUNT:
+      return {
+        ...state,
+        totalCount: action.payload
+      }
+    case SET_GAME_TIMER:
+      return {
+        ...state,
+        initialTime: action.payload
+      }
+    case SET_USER_PLACE:
+      return {
+        ...state,
+        userPlace: action.payload
+      }
+    case SET_USER_NAME:
+      return {
+        ...state,
+        userName: action.payload
+      }
     default:
       return state;
   }
