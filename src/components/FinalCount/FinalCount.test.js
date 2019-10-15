@@ -27,40 +27,17 @@ test('Button "BACK TO MAIN" click', () => {
   const testInstance = instance.root;
   const buttons = testInstance.findAllByType('button');
   const backButton = buttons.find(i => i.props.children === 'BACK TO MAIN');
-  backButton.props.onClick();
-})
-
-test('Button "RESTART" click', () => {
-  const testInstance = instance.root;
-  const buttons = testInstance.findAllByType('button');
-  const restartButton = buttons.find(i => i.props.children === 'RESTART');
-  restartButton.props.onClick();
-})
-
-test('Button "SUBMIT" click', () => {
-  const testInstance = instance.root;
-  const buttons = testInstance.findAllByType('button');
-  const submitButton = buttons.find(i => i.props.children === 'SUBMIT');
-  submitButton.props.onClick();
+  const buttonClick = jest.fn( () => backButton.props.onClick());
+  buttonClick();
+  expect(buttonClick).toHaveBeenCalled();
 })
 
 test('Inputs value was change', () => {
   const testInstance = instance.root;
-  const input = testInstance.findByType('input');
-  const e = { target: { value: 'test' } };
-  input.props.onChange(e);
-})
-
-test('Submitting form', () => {
-  const testInstance = instance.root;
-  const form = testInstance.findByType('form');
-  const e = { preventDefault: jest.fn( x => 'mock') };
-  form.props.onSubmit(e);
-})
-
-test('Catch error', () => {
-  const testInstance = instance.root;
-  const e = { preventDefault: jest.fn( x => new Error()) }
-  const form = testInstance.findByType('form');
-  form.props.onSubmit(e);
+  let input = testInstance.findByType('input');
+  const e = { target: { value: 'x' } };
+  const change = jest.fn( (e) => input.props.onChange(e) );
+  change(e);
+  change(e);
+  expect(change).toHaveBeenCalledTimes(2);
 })

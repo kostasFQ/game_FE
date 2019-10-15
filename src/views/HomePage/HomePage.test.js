@@ -22,3 +22,28 @@ test('FinalCount should be render', () => {
   let component = instance.toJSON();
   expect(component).toMatchSnapshot();
 })
+
+test('FinalCount should be render', () => {
+  const store2 = {
+    ..._store,
+    gameStarted: true,
+    gameOver: false
+  };
+
+  const initialState = { game: store2 };
+  const store = mockStore(initialState);
+  
+  const instance = renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/">
+        <HomePage />
+      </StaticRouter>
+    </Provider>,
+  );
+
+  const testInstance = instance.root;
+  const button = testInstance.findByType('button');
+  const buttonClick = jest.fn( () => button.props.onClick());
+  buttonClick();
+  expect(buttonClick).toHaveBeenCalled();
+})

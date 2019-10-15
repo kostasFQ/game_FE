@@ -22,7 +22,6 @@ class GamePage extends PureComponent {
     if (clicks === 0 && totalCount !== 0) {
       this.setState(() => ({ clicks: totalCount }));
     }
-
   }
 
   componentWillUnmount() {

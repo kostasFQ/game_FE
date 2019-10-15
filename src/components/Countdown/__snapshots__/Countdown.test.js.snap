@@ -7,3 +7,13 @@ exports[`Countdown should be render 1`] = `
    seconds
 </div>
 `;
+
+exports[`timer 1`] = `
+<div>
+  start from 
+  0
+   seconds
+</div>
+`;
+
+exports[`unmount 1`] = `null`;
