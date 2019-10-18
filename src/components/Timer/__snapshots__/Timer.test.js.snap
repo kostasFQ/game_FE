@@ -1,6 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FinalCount should be render 1`] = `
+exports[`Timer  1`] = `
+<div
+  className="timersContainer"
+>
+  <div
+    className="timersContainer__counter_visible"
+  >
+    <span
+      className="timersContainer__digits"
+    />
+     seconds remain
+  </div>
+</div>
+`;
+
+exports[`Timer should be render 1`] = `
 <div
   className="timersContainer"
 >
@@ -10,6 +25,25 @@ exports[`FinalCount should be render 1`] = `
     <span
       className="timersContainer__digits"
     />
+     seconds remain
+  </div>
+</div>
+`;
+
+exports[`Timer unmount 1`] = `null`;
+
+exports[`Timer update seconds 1`] = `
+<div
+  className="timersContainer"
+>
+  <div
+    className="timersContainer__counter_visible"
+  >
+    <span
+      className="timersContainer__digits"
+    >
+      1
+    </span>
      seconds remain
   </div>
 </div>

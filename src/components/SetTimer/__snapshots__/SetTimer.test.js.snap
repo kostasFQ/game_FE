@@ -20,15 +20,15 @@ Array [
         value={5}
       />
       <input
-        className="setTimers__container__checkboxes__item setTimers__container__checkboxes__item_active"
-        disabled={true}
+        className="setTimers__container__checkboxes__item"
+        disabled={false}
         name="seconds"
         type="button"
         value={10}
       />
       <input
-        className="setTimers__container__checkboxes__item"
-        disabled={false}
+        className="setTimers__container__checkboxes__item setTimers__container__checkboxes__item_active"
+        disabled={true}
         name="seconds"
         type="button"
         value={15}

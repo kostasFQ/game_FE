@@ -1,20 +1,26 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { StaticRouter } from 'react-router-dom';
 import _store from '../../../mocks/store';
-import SetTimer from './component';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import { leaderBoard } from 'api/urls';
 
-const props = {
-  game: {
-    gameStarted: true,
-    gameOver: true,
-    initialTime: 10
-  },
-  seconds: [5, 10, 15, 30, 60],
-  setGameTimer: jest.fn( () => {console.log('submit')} ) 
-}
+import SetTimer from './container';
+
+const mockStore = configureStore([thunk]);
+const initialState = { game: _store };
+const store = mockStore(initialState);
 
 const instance = renderer.create(
-  <SetTimer {...props} />
+  <Provider store={store}>
+    <StaticRouter location="/game">
+      <SetTimer />
+    </StaticRouter>
+  </Provider>,
 );
 
 test('FinalCount should be render', () => {
@@ -22,10 +28,12 @@ test('FinalCount should be render', () => {
   expect(component).toMatchSnapshot();
 })
 
-test('Form submit', () => {
-  const x = instance.root;
-  const form = x.findByType('form')
+test('FinalCount set time', () => {
+  const testInstance = instance.root;
+  const form = testInstance.findByType('form')
   const e ={ target: { value: 10 } }
-  form.props.onClick(e);
-  expect(props.setGameTimer).toHaveBeenCalled()
+
+  const click = jest.fn( (e) => form.props.onClick(e));
+  click(e);
+  expect(click).toHaveBeenCalled();
 })

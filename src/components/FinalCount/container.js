@@ -10,12 +10,11 @@ const mapDispatchToProps = dispatch => ({
   toggleGameOver: bool => dispatch(toggleGameOver(bool)),
   setUserPlace: place => dispatch(setUserPlace(place)),
   setUserName: name => dispatch(setUserName(name)),
-  makeCall: (url, value) => makeCall(url, value)
+  saveResult: value => makeCall(saveResultUrl(saveResultUrl), value)
 })
 
 const mapStateToProps = state => ({
   game: state.game,
-  saveResultUrl: saveResultUrl
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FinalCount);

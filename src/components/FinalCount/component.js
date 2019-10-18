@@ -19,7 +19,7 @@ class FinalCount extends PureComponent {
   submitForm = async e => {
     try {
       e.preventDefault();
-      const { game: { totalCount, initialTime }, makeCall, history, setUserPlace, setUserName, saveResultUrl } = this.props;
+      const { game: { totalCount, initialTime }, saveResult, history, setUserPlace, setUserName } = this.props;
       const { value } = this.state;
       const body = {
         name: value,
@@ -27,12 +27,14 @@ class FinalCount extends PureComponent {
         average: Number((totalCount / initialTime).toFixed(1)),
         seconds: Number(initialTime)
       }
-      const { data: { error, response } } = await makeCall(saveResultUrl(), body);
+      
+      const { data: { error, response } } = await saveResult(body);
 
       if (error) {
         this.setState(() => ({ error: true, errorText: error }));
         return;
       }
+      
       setUserPlace(response);
       setUserName(value);
       this.setState(() => ({ error: false, errorText: undefined }));
@@ -49,7 +51,7 @@ class FinalCount extends PureComponent {
 
   render() {
     const { game: { totalCount, initialTime }, history } = this.props;
-    const { error, errorText } = this.state;
+    const { error, errorText, value } = this.state;
 
     return (
       <div className={styles.finalCount__container}>
@@ -63,9 +65,9 @@ class FinalCount extends PureComponent {
           </span>
           <div className={styles.finalCount__container__result_text}>it's {(totalCount / initialTime).toFixed(1)} clicks per second</div>
         </div>
-        <form onSubmit={this.submitForm} className={styles.finalCount__container__form}>
+        <form method='post' onSubmit={this.submitForm} className={styles.finalCount__container__form}>
           so, you can enter your name
-          <input placeholder="" onChange={this.fillField}
+          <input placeholder="" onChange={this.fillField} value={value}
             className={cn(styles.finalCount__container__form_input,
               { [styles.finalCount__container__form_input_error]: error }
             )}
@@ -90,7 +92,6 @@ FinalCount.defaultProps = {
 FinalCount.propTypes = {
   totalCount: PropTypes.number,
   saveCount: PropTypes.func.isRequired,
-  saveResultUrl: PropTypes.func.isRequired,
   toggleGameOver: PropTypes.func.isRequired,
   toggleGameStarted: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired

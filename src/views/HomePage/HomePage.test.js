@@ -23,7 +23,7 @@ test('FinalCount should be render', () => {
   expect(component).toMatchSnapshot();
 })
 
-test('FinalCount should be render', () => {
+test('FinalCount button click', () => {
   const store2 = {
     ..._store,
     gameStarted: true,

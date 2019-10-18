@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FinalCount should be render 1`] = `
+exports[`FinalCount form submit with POST error 1`] = `
 <div
   className="finalCount__container"
 >
@@ -34,6 +34,83 @@ exports[`FinalCount should be render 1`] = `
   </div>
   <form
     className="finalCount__container__form"
+    method="post"
+    onSubmit={[Function]}
+  >
+    so, you can enter your name
+    <input
+      className="finalCount__container__form_input finalCount__container__form_input_error"
+      onChange={[Function]}
+      placeholder=""
+      value="kst"
+    />
+    <span
+      className="finalCount__container__form_errorMessage"
+    >
+      error
+    </span>
+    - and -
+    <button
+      className="submitButton"
+      onClick={[Function]}
+      type="submit"
+    >
+      SUBMIT
+    </button>
+  </form>
+  - or -
+  <button
+    className="restartButton"
+    onClick={[Function]}
+  >
+    RESTART
+  </button>
+  <button
+    className="restartButton"
+    onClick={[Function]}
+  >
+    BACK TO MAIN
+  </button>
+</div>
+`;
+
+exports[`FinalCount form submit without error 1`] = `
+<div
+  className="finalCount__container"
+>
+  <div
+    className="finalCount__container__result"
+  >
+    <span
+      className="finalCount__container__result_text"
+    >
+      You have
+    </span>
+    <div
+      className="finalCount__container__result_digits"
+    >
+      15
+    </div>
+    <span
+      className="finalCount__container__result_text"
+    >
+      points 
+      for 
+      15
+       
+       seconds
+    </span>
+    <div
+      className="finalCount__container__result_text"
+    >
+      it's 
+      1.0
+       clicks per second
+    </div>
+  </div>
+  <form
+    className="finalCount__container__form"
+    method="post"
     onSubmit={[Function]}
   >
     so, you can enter your name
@@ -41,6 +118,78 @@ exports[`FinalCount should be render 1`] = `
       className="finalCount__container__form_input"
       onChange={[Function]}
       placeholder=""
+      value="kst"
+    />
+    - and -
+    <button
+      className="submitButton"
+      onClick={[Function]}
+      type="submit"
+    >
+      SUBMIT
+    </button>
+  </form>
+  - or -
+  <button
+    className="restartButton"
+    onClick={[Function]}
+  >
+    RESTART
+  </button>
+  <button
+    className="restartButton"
+    onClick={[Function]}
+  >
+    BACK TO MAIN
+  </button>
+</div>
+`;
+
+exports[`FinalCount should be render 1`] = `
+<div
+  className="finalCount__container"
+>
+  <div
+    className="finalCount__container__result"
+  >
+    <span
+      className="finalCount__container__result_text"
+    >
+      You have
+    </span>
+    <div
+      className="finalCount__container__result_digits"
+    >
+      1
+    </div>
+    <span
+      className="finalCount__container__result_text"
+    >
+      point 
+      for 
+      1
+       
+       second
+    </span>
+    <div
+      className="finalCount__container__result_text"
+    >
+      it's 
+      1.0
+       clicks per second
+    </div>
+  </div>
+  <form
+    className="finalCount__container__form"
+    method="post"
+    onSubmit={[Function]}
+  >
+    so, you can enter your name
+    <input
+      className="finalCount__container__form_input"
+      onChange={[Function]}
+      placeholder=""
+      value=""
     />
     - and -
     <button

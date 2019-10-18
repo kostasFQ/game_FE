@@ -7,18 +7,98 @@ import { StaticRouter } from 'react-router-dom';
 import _store from '../../../mocks/store';
 import Timer from './container';
 const mockStore = configureStore([thunk]);
-const initialState = { game: _store };
-const store = mockStore(initialState);
 
-const instance = renderer.create(
-  <Provider store={store}>
-    <StaticRouter location="/game">
-      <Timer />
-    </StaticRouter>
-  </Provider>,
-);
+test('Timer should be render', () => {
+  const initialState = { game: _store };
+  const store = mockStore(initialState);
+  
+  const instance = renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game/1">
+        <Timer />
+      </StaticRouter>
+    </Provider>,
+  );
 
-test('FinalCount should be render', () => {
+  let component = instance.toJSON();
+  expect(component).toMatchSnapshot();
+})
+
+test('Timer update seconds', async () => {
+  const initialState = { game: _store };
+  let store = mockStore(initialState);
+  
+  const instance = await renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game/1">
+        <Timer />
+      </StaticRouter>
+    </Provider>,
+  );
+
+  const updatedState = {
+    game: {
+      ..._store,
+      gameStarted: true,
+      gameOver: false
+    }
+  };
+  store = mockStore(updatedState);
+
+  instance.update(
+    <Provider store={store}>
+      <StaticRouter location="/game/1">
+        <Timer />
+      </StaticRouter>
+    </Provider>,
+  )
+
+  let component = instance.toJSON();
+  expect(component).toMatchSnapshot();
+})
+
+test('Timer ', async () => {
+    const initialState = {
+    game: {
+      ..._store,
+      gameStarted: true,
+      gameOver: false,
+    }
+  };
+  let store = mockStore(initialState);
+
+  const instance = await renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game/0">
+        <Timer />
+      </StaticRouter>
+    </Provider>,
+  );
+
+  const time = () => new Promise( (res, rej) => {
+    setTimeout(() => {
+      res("result");
+    }, 1000)
+  } )
+  await time();
+
+  let component = instance.toJSON();
+  expect(component).toMatchSnapshot();
+})
+
+test('Timer unmount', async () => {
+  const initialState = { game: _store };
+  let store = mockStore(initialState);
+  
+  const instance = await renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game/1">
+        <Timer />
+      </StaticRouter>
+    </Provider>,
+  );
+  instance.unmount();
+
   let component = instance.toJSON();
   expect(component).toMatchSnapshot();
 })

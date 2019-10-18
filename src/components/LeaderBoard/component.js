@@ -3,18 +3,17 @@ import cn from 'classnames';
 import styles from './LeaderBoard.module.scss';
 
 class LeaderBoard extends PureComponent {
-  state = { list: [], tableHeaders: [], loading: false }
+  state = { list: [], tableHeaders: [], loading: false };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.getLeaders();
   }
 
   getLeaders = async () => {
     try {
-      const { makeCall, size, leaderBoard } = this.props;
+      const { size, getLeaders } = this.props;
       this.setState(() => ({ loading: true }));
-      const { data: { response: list } } = await makeCall(leaderBoard(size));
-
+      const { data: { response: list } } = await getLeaders(size);
       this.setState(() => ({ loading: false, list }));
     } catch (err) {
       throw new Error(err.message);
@@ -24,7 +23,6 @@ class LeaderBoard extends PureComponent {
   render() {
     const { list, loading } = this.state;
     const { game: { userPlace, userName } } = this.props;
-
     if (loading) {
       return (
         <h3>Loading...</h3>

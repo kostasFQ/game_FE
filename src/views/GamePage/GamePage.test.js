@@ -11,6 +11,7 @@ const mockStore = configureStore([thunk]);
 test('GamePage should be render Countdown', () => {
   const initialState = { game: _store };
   const store = mockStore(initialState);
+
   const instance = renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
@@ -89,6 +90,74 @@ test('GamePage update', () => {
     </Provider>,
   );
 
+  let component = instance.toJSON();
+  expect(component).toMatchSnapshot();
+})
+
+test('GamePage increment button click', () => {
+  const _updatedStore = {
+    ..._store,
+    gameStarted: true,
+    gameOver: false
+  };
+
+  const initialState = { game: _updatedStore };
+  const store = mockStore(initialState);
+  const instance = renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game">
+        <GamePage />
+      </StaticRouter>
+    </Provider>,
+  );
+
+  const testInstance = instance.root;
+  const button = testInstance.findByType('button');
+  const buttonClick = jest.fn( () => button.props.onClick());
+  buttonClick();
+  expect(buttonClick).toHaveBeenCalled();
+})
+
+test('GamePage save count into store', () => {
+  const _updatedStore = {
+    ..._store,
+    gameStarted: true,
+    gameOver: false,
+    totalCount: 10
+  };
+
+  const initialState = { game: _updatedStore };
+  const store = mockStore(initialState);
+  const instance = renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game">
+        <GamePage />
+      </StaticRouter>
+    </Provider>,
+  );
+
+  let component = instance.toJSON();
+  expect(component).toMatchSnapshot();
+})
+
+test('GamePage unmount', () => {
+  const _updatedStore = {
+    ..._store,
+    gameStarted: true,
+    gameOver: false,
+    totalCount: 10
+  };
+
+  const initialState = { game: _updatedStore };
+  const store = mockStore(initialState);
+  const instance = renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game">
+        <GamePage />
+      </StaticRouter>
+    </Provider>,
+  );
+  instance.unmount();
   let component = instance.toJSON();
   expect(component).toMatchSnapshot();
 })

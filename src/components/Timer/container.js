@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleGameStarted, toggleGameOver, setGameTimer } from 'store/game/actions';
+import { toggleGameOver, setGameTimer } from 'store/game/actions';
 import Timer from './component';
 
 const mapStateToProps = state => ({
@@ -7,7 +7,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleGameStarted: bool => dispatch(toggleGameStarted(bool)),
   toggleGameOver: bool => dispatch(toggleGameOver(bool)),
   setGameTimer: seconds => dispatch(setGameTimer(seconds)),
 })

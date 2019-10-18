@@ -1,75 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GamePage 1`] = `
+exports[`GamePage save count into store 1`] = `
 <div
   className="gamePage__container"
 >
-   
   <div
-    className="finalCount__container"
+    className="counter"
   >
-    <div
-      className="finalCount__container__result"
-    >
-      <span
-        className="finalCount__container__result_text"
-      >
-        You have
-      </span>
-      <div
-        className="finalCount__container__result_digits"
-      />
-      <span
-        className="finalCount__container__result_text"
-      >
-        points 
-        for 
-        15
-         
-         seconds
-      </span>
-      <div
-        className="finalCount__container__result_text"
-      >
-        it's 
-        0.0
-         clicks per second
-      </div>
+    <div>
+      YOU CLICK
     </div>
-    <form
-      className="finalCount__container__form"
-      onSubmit={[Function]}
+    <div
+      className="counter__digit"
     >
-      so, you can enter your name
-      <input
-        className="finalCount__container__form_input"
-        onChange={[Function]}
-        placeholder=""
-      />
-      - and -
-      <button
-        className="submitButton"
-        onClick={[Function]}
-        type="submit"
-      >
-        SUBMIT
-      </button>
-    </form>
-    - or -
-    <button
-      className="restartButton"
-      onClick={[Function]}
-    >
-      RESTART
-    </button>
-    <button
-      className="restartButton"
-      onClick={[Function]}
-    >
-      BACK TO MAIN
-    </button>
+      10
+    </div>
+    <div>
+      times
+    </div>
   </div>
-   
+  <button
+    className="mainButton"
+    onClick={[Function]}
+  >
+    CLICK HERE!
+  </button>
 </div>
 `;
 
@@ -153,6 +108,7 @@ exports[`GamePage should be render FinalCount 1`] = `
     </div>
     <form
       className="finalCount__container__form"
+      method="post"
       onSubmit={[Function]}
     >
       so, you can enter your name
@@ -160,6 +116,7 @@ exports[`GamePage should be render FinalCount 1`] = `
         className="finalCount__container__form_input"
         onChange={[Function]}
         placeholder=""
+        value=""
       />
       - and -
       <button
@@ -187,6 +144,8 @@ exports[`GamePage should be render FinalCount 1`] = `
    
 </div>
 `;
+
+exports[`GamePage unmount 1`] = `null`;
 
 exports[`GamePage update 1`] = `
 <div
@@ -226,6 +185,7 @@ exports[`GamePage update 1`] = `
     </div>
     <form
       className="finalCount__container__form"
+      method="post"
       onSubmit={[Function]}
     >
       so, you can enter your name
@@ -233,6 +193,7 @@ exports[`GamePage update 1`] = `
         className="finalCount__container__form_input"
         onChange={[Function]}
         placeholder=""
+        value=""
       />
       - and -
       <button

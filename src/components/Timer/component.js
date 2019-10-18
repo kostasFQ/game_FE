@@ -52,7 +52,7 @@ class Timer extends Component {
     return (
       <div className={styles.timersContainer}>
         <div className={cn(gameStarted && !gameOver ? styles.timersContainer__counter_visible : styles.timersContainer__counter_hide)}>
-          <span className={styles.timersContainer__digits}>{seconds}</span> seconds remain
+          <span className={styles.timersContainer__digits}>{seconds && seconds}</span> seconds remain
         </div>
       </div>
     );
