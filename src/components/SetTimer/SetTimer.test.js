@@ -35,13 +35,13 @@ test('FinalCount set time', async () => {
         <SetTimer />
       </StaticRouter>
     </Provider>,
-  ); 
+  );
 
   const testInstance = instance.root;
   const form = testInstance.findByType('form')
-  const e ={ target: { value: 10 } }
+  const e = { target: { value: 10 } }
 
-  const click = jest.fn( (e) => form.props.onClick(e));
+  const click = jest.fn((e) => form.props.onClick(e));
   click(e);
   expect(click).toHaveBeenCalled();
 })

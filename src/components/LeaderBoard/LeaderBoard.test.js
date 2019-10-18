@@ -14,7 +14,7 @@ const mockStore = configureStore([thunk]);
 const initialState = { game: _store };
 const store = mockStore(initialState);
 
-test('LeaderBoard should be render', async() => {
+test('LeaderBoard should be render', async () => {
   const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
@@ -26,7 +26,7 @@ test('LeaderBoard should be render', async() => {
   expect(component).toMatchSnapshot();
 });
 
-test('LeaderBoard get data', async() => {
+test('LeaderBoard get data', async () => {
   const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
@@ -35,18 +35,18 @@ test('LeaderBoard get data', async() => {
     </Provider>,
   );
 
-  const time = () => new Promise( (res, rej) => {
+  const time = () => new Promise((res, rej) => {
     setTimeout(() => {
       res("result");
     }, 1000)
-  } )
+  })
   await time();
-  
+
   let component = instance.toJSON();
   expect(component).toMatchSnapshot();
 });
 
-test('leader board error', async() => {
+test('leader board error', async () => {
   const mock = new MockAdapter(axios);
   mock.onGet(leaderBoard(10)).networkError();
 

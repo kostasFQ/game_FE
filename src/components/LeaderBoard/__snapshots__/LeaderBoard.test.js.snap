@@ -61,6 +61,27 @@ Array [
           2
         </td>
         <td>
+          2
+        </td>
+        <td>
+          45
+        </td>
+        <td
+          className="leaderBoard__table__average"
+        >
+          9
+        </td>
+        <td>
+          5
+        </td>
+      </tr>
+      <tr
+        className=""
+      >
+        <td>
+          3
+        </td>
+        <td>
           kst1
         </td>
         <td>
@@ -79,7 +100,7 @@ Array [
         className=""
       >
         <td>
-          3
+          4
         </td>
         <td>
           kst2
@@ -100,7 +121,7 @@ Array [
         className="leaderBoard__table__div"
       >
         <td>
-          4
+          5
         </td>
         <td>
           kst
@@ -112,27 +133,6 @@ Array [
           className="leaderBoard__table__average"
         >
           7
-        </td>
-        <td>
-          5
-        </td>
-      </tr>
-      <tr
-        className=""
-      >
-        <td>
-          5
-        </td>
-        <td>
-          Gfdd
-        </td>
-        <td>
-          24
-        </td>
-        <td
-          className="leaderBoard__table__average"
-        >
-          4.8
         </td>
         <td>
           5

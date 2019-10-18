@@ -36,18 +36,18 @@ test('FinalCount should be render', async () => {
 })
 
 test('FinalCount Button "BACK TO MAIN" click', async () => {
-const instance = await renderer.create(
-  <Provider store={store}>
-    <StaticRouter location="/game">
-      <FinalCount />
-    </StaticRouter>
-  </Provider>,
-);
+  const instance = await renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game">
+        <FinalCount />
+      </StaticRouter>
+    </Provider>,
+  );
 
   const testInstance = instance.root;
   const buttons = testInstance.findAllByType('button');
   const backButton = buttons.find(i => i.props.children === 'BACK TO MAIN');
-  const buttonClick = jest.fn( () => backButton.props.onClick());
+  const buttonClick = jest.fn(() => backButton.props.onClick());
   buttonClick();
   expect(buttonClick).toHaveBeenCalled();
 })
@@ -64,21 +64,23 @@ test('FinalCount Inputs value was change', async () => {
   const testInstance = instance.root;
   let input = testInstance.findByType('input');
   const e = { target: { value: 'x' } };
-  const change = jest.fn( (e) => input.props.onChange(e) );
+  const change = jest.fn((e) => input.props.onChange(e));
   change(e);
   change(e);
   expect(change).toHaveBeenCalledTimes(2);
 })
 
 test('FinalCount form submit without error', async () => {
-  const initialState = { game: {
-    ..._store,
-    totalCount: 15
-  } };
+  const initialState = {
+    game: {
+      ..._store,
+      totalCount: 15
+    }
+  };
   const store = mockStore(initialState);
   const mock = new MockAdapter(axios);
   mock.onPost(saveResultUrl()).replyOnce(200, { status: 201, response: 7 });
-  const e = { target: { value: 'kst' }, preventDefault: () => {} };
+  const e = { target: { value: 'kst' }, preventDefault: () => { } };
 
   const instance = await renderer.create(
     <Provider store={store}>
@@ -88,18 +90,18 @@ test('FinalCount form submit without error', async () => {
     </Provider>,
   );
   const testInstance = instance.root;
-  
+
   let input = testInstance.findByType('input');
   input.props.onChange(e);
 
   const form = testInstance.findByType('form');
   form.props.onSubmit(e);
 
-  const time = () => new Promise( (res, rej) => {
+  const time = () => new Promise((res, rej) => {
     setTimeout(() => {
       res("result");
     }, 1000)
-  } )
+  })
   await time();
 
   let component = instance.toJSON();
@@ -110,7 +112,7 @@ test('FinalCount form submit without error', async () => {
 test('FinalCount form submit with POST error', async () => {
   const mock = new MockAdapter(axios);
   mock.onPost(saveResultUrl()).replyOnce(200, { status: 201, error: "error" });
-  const e = { target: { value: 'kst' }, preventDefault: () => {} };
+  const e = { target: { value: 'kst' }, preventDefault: () => { } };
 
   const instance = await renderer.create(
     <Provider store={store}>
@@ -120,18 +122,18 @@ test('FinalCount form submit with POST error', async () => {
     </Provider>,
   );
   const testInstance = instance.root;
-  
+
   let input = testInstance.findByType('input');
   input.props.onChange(e);
 
   const form = testInstance.findByType('form');
   form.props.onSubmit(e);
 
-  const time = () => new Promise( (res, rej) => {
+  const time = () => new Promise((res, rej) => {
     setTimeout(() => {
       res("result");
     }, 1000)
-  } )
+  })
   await time();
 
   let component = instance.toJSON();
@@ -142,8 +144,8 @@ test('FinalCount form submit with POST error', async () => {
 test('FinalCount form submit network error', async () => {
   const mock = new MockAdapter(axios);
   mock.onPost(saveResultUrl(), {}).networkError();
-  const e = { target: { value: 'kst' }, preventDefault: () => {} };
-  
+  const e = { target: { value: 'kst' }, preventDefault: () => { } };
+
   const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
@@ -160,18 +162,18 @@ test('FinalCount form submit network error', async () => {
 })
 
 test('FinalCount Button "RESTART" click', async () => {
-const instance = await renderer.create(
-  <Provider store={store}>
-    <StaticRouter location="/game">
-      <FinalCount />
-    </StaticRouter>
-  </Provider>,
-);
+  const instance = await renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game">
+        <FinalCount />
+      </StaticRouter>
+    </Provider>,
+  );
 
   const testInstance = instance.root;
   const buttons = testInstance.findAllByType('button');
   const backButton = buttons.find(i => i.props.children === 'RESTART');
-  const buttonClick = jest.fn( () => backButton.props.onClick());
+  const buttonClick = jest.fn(() => backButton.props.onClick());
   buttonClick();
   expect(buttonClick).toHaveBeenCalled();
 })

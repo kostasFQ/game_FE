@@ -11,7 +11,7 @@ const mockStore = configureStore([thunk]);
 test('Timer should be render', async () => {
   const initialState = { game: _store };
   const store = mockStore(initialState);
-  
+
   const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game/1">
@@ -27,7 +27,7 @@ test('Timer should be render', async () => {
 test('Timer update seconds', async () => {
   const initialState = { game: _store };
   let store = mockStore(initialState);
-  
+
   const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game/1">
@@ -58,7 +58,7 @@ test('Timer update seconds', async () => {
 })
 
 test('Timer update state', async () => {
-    const initialState = {
+  const initialState = {
     game: {
       ..._store,
       gameStarted: true,
@@ -75,11 +75,11 @@ test('Timer update state', async () => {
     </Provider>,
   );
 
-  const time = () => new Promise( (res, rej) => {
+  const time = () => new Promise((res, rej) => {
     setTimeout(() => {
       res("result");
     }, 1000)
-  } )
+  })
   await time();
 
   let component = instance.toJSON();
@@ -89,7 +89,7 @@ test('Timer update state', async () => {
 test('Timer unmount', async () => {
   const initialState = { game: _store };
   let store = mockStore(initialState);
-  
+
   const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game/1">
