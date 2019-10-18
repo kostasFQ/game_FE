@@ -15,20 +15,28 @@ const mockStore = configureStore([thunk]);
 const initialState = { game: _store };
 const store = mockStore(initialState);
 
-const instance = renderer.create(
-  <Provider store={store}>
-    <StaticRouter location="/game">
-      <SetTimer />
-    </StaticRouter>
-  </Provider>,
-);
+test('FinalCount should be render', async () => {
+  const instance = await renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game">
+        <SetTimer />
+      </StaticRouter>
+    </Provider>,
+  );
 
-test('FinalCount should be render', () => {
   let component = instance.toJSON();
   expect(component).toMatchSnapshot();
 })
 
-test('FinalCount set time', () => {
+test('FinalCount set time', async () => {
+  const instance = await renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/game">
+        <SetTimer />
+      </StaticRouter>
+    </Provider>,
+  ); 
+
   const testInstance = instance.root;
   const form = testInstance.findByType('form')
   const e ={ target: { value: 10 } }

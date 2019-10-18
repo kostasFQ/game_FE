@@ -8,11 +8,11 @@ import _store from '../../../mocks/store';
 import Timer from './container';
 const mockStore = configureStore([thunk]);
 
-test('Timer should be render', () => {
+test('Timer should be render', async () => {
   const initialState = { game: _store };
   const store = mockStore(initialState);
   
-  const instance = renderer.create(
+  const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game/1">
         <Timer />
@@ -57,7 +57,7 @@ test('Timer update seconds', async () => {
   expect(component).toMatchSnapshot();
 })
 
-test('Timer ', async () => {
+test('Timer update state', async () => {
     const initialState = {
     game: {
       ..._store,

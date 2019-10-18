@@ -11,15 +11,14 @@ const initialState = { game: _store };
 const mStore = configureMockStore([thunk]);
 const store = mStore(initialState);
 
-const instance = renderer.create(
-  <Provider store={store}>
-    <StaticRouter location="/" context={{}}>
-      <App />
-    </StaticRouter>
-  </Provider>,
-);
-
-test('FinalCount should be render', () => {
+test('FinalCount should be render', async () => {
+  const instance = await renderer.create(
+    <Provider store={store}>
+      <StaticRouter location="/" context={{}}>
+        <App />
+      </StaticRouter>
+    </Provider>,
+  );
   let component = instance.toJSON();
   expect(component).toMatchSnapshot();
 })

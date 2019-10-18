@@ -8,11 +8,11 @@ import _store from '../../../mocks/store';
 import GamePage from './container';
 const mockStore = configureStore([thunk]);
 
-test('GamePage should be render Countdown', () => {
+test('GamePage should be render Countdown', async() => {
   const initialState = { game: _store };
   const store = mockStore(initialState);
 
-  const instance = renderer.create(
+  const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
         <GamePage />
@@ -24,7 +24,7 @@ test('GamePage should be render Countdown', () => {
   expect(component).toMatchSnapshot();
 })
 
-test('GamePage should be render FinalCount', () => {
+test('GamePage should be render FinalCount', async () => {
   const store2 = {
     ..._store,
     gameStarted: true,
@@ -32,7 +32,7 @@ test('GamePage should be render FinalCount', () => {
   }
   const initialState = { game: store2 };
   const store = mockStore(initialState);
-  const instance = renderer.create(
+  const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
         <GamePage />
@@ -44,7 +44,7 @@ test('GamePage should be render FinalCount', () => {
   expect(component).toMatchSnapshot();
 })
 
-test('GamePage should be render', () => {
+test('GamePage should be render', async () => {
   const store3 = {
     ..._store,
     gameStarted: true,
@@ -52,7 +52,7 @@ test('GamePage should be render', () => {
   }
   const initialState = { game: store3 };
   const store = mockStore(initialState);
-  const instance = renderer.create(
+  const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
         <GamePage />
@@ -64,10 +64,10 @@ test('GamePage should be render', () => {
   expect(component).toMatchSnapshot();
 })
 
-test('GamePage update', () => {
+test('GamePage update', async () => {
   const initialState = { game: _store };
   const store = mockStore(initialState);
-  const instance = renderer.create(
+  const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
         <GamePage />
@@ -94,7 +94,7 @@ test('GamePage update', () => {
   expect(component).toMatchSnapshot();
 })
 
-test('GamePage increment button click', () => {
+test('GamePage increment button click', async () => {
   const _updatedStore = {
     ..._store,
     gameStarted: true,
@@ -103,7 +103,7 @@ test('GamePage increment button click', () => {
 
   const initialState = { game: _updatedStore };
   const store = mockStore(initialState);
-  const instance = renderer.create(
+  const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
         <GamePage />
@@ -118,7 +118,7 @@ test('GamePage increment button click', () => {
   expect(buttonClick).toHaveBeenCalled();
 })
 
-test('GamePage save count into store', () => {
+test('GamePage save count into store', async () => {
   const _updatedStore = {
     ..._store,
     gameStarted: true,
@@ -128,7 +128,7 @@ test('GamePage save count into store', () => {
 
   const initialState = { game: _updatedStore };
   const store = mockStore(initialState);
-  const instance = renderer.create(
+  const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
         <GamePage />
@@ -140,7 +140,7 @@ test('GamePage save count into store', () => {
   expect(component).toMatchSnapshot();
 })
 
-test('GamePage unmount', () => {
+test('GamePage unmount', async () => {
   const _updatedStore = {
     ..._store,
     gameStarted: true,
@@ -150,7 +150,7 @@ test('GamePage unmount', () => {
 
   const initialState = { game: _updatedStore };
   const store = mockStore(initialState);
-  const instance = renderer.create(
+  const instance = await renderer.create(
     <Provider store={store}>
       <StaticRouter location="/game">
         <GamePage />
