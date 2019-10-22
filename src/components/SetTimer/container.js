@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SetTimer from './component';
 import { setGameTimer } from 'store/game/actions';
-import seconds from 'assets/helpers/secondsArray';
+import seconds from 'helpers/secondsArray';
 
 const mapDispatchToProps = dispatch => ({
   setGameTimer: seconds => dispatch(setGameTimer(seconds)),
