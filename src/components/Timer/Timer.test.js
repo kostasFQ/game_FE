@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { StaticRouter } from 'react-router-dom';
 import _store from '../../../mocks/store';
-import Timer from './container';
+import Timer from './index';
 const mockStore = configureStore([thunk]);
 
 test('Timer should be render', async () => {

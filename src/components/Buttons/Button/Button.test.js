@@ -12,8 +12,9 @@ test('Button should be render', async () => {
 
 test('Button click', async () => {
   const instance = await renderer.create(
-    <Button title='Start' disabled={true} onClick={ () => {} } />
+    <Button title='Start' disabled={true} onClick={ () => { console.log('button click') } } />
   );
+
   const testInstance = instance.root;
   const button = testInstance.findByType('button');
   const buttonClick = jest.fn(() => button.props.onClick());

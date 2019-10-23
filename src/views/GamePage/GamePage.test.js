@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { StaticRouter } from 'react-router-dom';
 import _store from '../../../mocks/store';
-import GamePage from './container';
+import GamePage from './index';
 const mockStore = configureStore([thunk]);
 
 test('GamePage should be render Countdown', async() => {
