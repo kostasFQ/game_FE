@@ -1,5 +1,5 @@
 import React from 'react';
-import Counter from './component';
+import Counter from './CounterComponent';
 import renderer from 'react-test-renderer';
 
 test('Counter should be render with 5 clicks', async () => {

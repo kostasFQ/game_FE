@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from './component';
+import Title from './TitleComponent';
 import renderer from 'react-test-renderer';
 
 test('Button should be render', async () => {

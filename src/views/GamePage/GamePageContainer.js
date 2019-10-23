@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import GamePage from './component';
+import GamePage from './GamePageComponent';
 import { saveCount } from 'store/game/actions';
 
 const mapDispatchToProps = dispatch => ({

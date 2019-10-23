@@ -58,7 +58,7 @@
       "src/api",
       "src/assets",
       "src/index.js",
-      "src/serviceWorker.js"
+      "src/helpers"
     ]
   }
 }

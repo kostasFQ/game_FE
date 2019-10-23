@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { toggleGameStarted, toggleGameOver } from 'store/game/actions';
-import HomePage from './component';
+import HomePage from './HomePageComponent';
 
 const mapStateToProps = state => ({
   game: state.game,

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { toggleGameStarted } from 'store/game/actions';
-import Countdown from './component';
+import Countdown from './CountdownComponent';
 
 const mapDispatchToProps = dispatch => ({
   toggleGameStarted: bool => dispatch(toggleGameStarted(bool)),

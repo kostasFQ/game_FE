@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { StaticRouter } from 'react-router-dom';
 import store from '../../../mocks/store';
 
-import Countdown from './container';
+import Countdown from './index';
 
 const toggleGameStarted = jest.fn(() => { console.log('xxx') })
 const initialState = { game: store, toggleGameStarted };

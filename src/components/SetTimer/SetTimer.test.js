@@ -5,11 +5,8 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { StaticRouter } from 'react-router-dom';
 import _store from '../../../mocks/store';
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { leaderBoard } from 'api/urls';
 
-import SetTimer from './container';
+import SetTimer from './index';
 
 const mockStore = configureStore([thunk]);
 const initialState = { game: _store };

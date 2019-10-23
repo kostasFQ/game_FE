@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Button from 'components/Buttons/Button/component';
+import Button from 'components/Buttons/Button';
+import SetTimer from 'components/SetTimer';
+import LeaderBoard from 'components/LeaderBoard';
 import buttonStyles from 'components/Buttons/Buttons.module.scss';
-import SetTimer from 'components/SetTimer/container';
-import LeaderBoard from 'components/LeaderBoard/container';
 import styles from '../assets/HomePage.module.scss';
 
 class HomePage extends Component {

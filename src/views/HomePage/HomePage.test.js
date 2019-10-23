@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { StaticRouter } from 'react-router-dom';
 import _store from '../../../mocks/store';
-import HomePage from './container';
+import HomePage from './index';
 const mockStore = configureStore([thunk]);
 const initialState = { game: _store };
 const store = mockStore(initialState);

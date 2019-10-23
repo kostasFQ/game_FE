@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
-import Button from 'components/Buttons/Button/component';
+import Button from 'components/Buttons/Button';
 import buttonStyles from 'components/Buttons/Buttons.module.scss';
 import styles from './FinalCount.module.scss';
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FinalCount from './component';
+import FinalCount from './FinalCountComponent';
 import { saveCount, toggleGameStarted, toggleGameOver, setUserPlace, setUserName } from 'store/game/actions';
 import { saveResultUrl } from 'api/urls';
 import makeCall from 'api/call';

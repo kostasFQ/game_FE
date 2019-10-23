@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { StaticRouter } from 'react-router-dom';
 import _store from '../../../mocks/store';
-import LeaderBoard from './container';
+import LeaderBoard from './index';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { leaderBoard } from 'api/urls';

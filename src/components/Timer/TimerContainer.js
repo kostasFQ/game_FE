@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { toggleGameOver, setGameTimer } from 'store/game/actions';
-import Timer from './component';
+import Timer from './TimerComponent';
 
 const mapStateToProps = state => ({
   game: state.game,

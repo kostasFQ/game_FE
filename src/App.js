@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import NotFoundPage from 'views/NotFoundPage';
-import GamePage from 'views/GamePage/container';
-import HomePage from 'views/HomePage/container';
-import Timer from 'components/Timer/container';
-import Title from 'components/Title/component';
+import GamePage from 'views/GamePage';
+import HomePage from 'views/HomePage';
+import Timer from 'components/Timer';
+import Title from 'components/Title';
 import seconds from 'helpers/secondsArray';
 
 function App() {
@@ -16,7 +16,6 @@ function App() {
         <Switch>
           <Route path='/' exact component={HomePage} />
           <Route path={`/game/:time(${seconds.join('|')})`} children={<GamePage />} />
-          {/* <Route path='/game/:time(5|10|15|30|60)' children={<GamePage />} /> */}
           <Route component={NotFoundPage} />
         </Switch>
       </Router>

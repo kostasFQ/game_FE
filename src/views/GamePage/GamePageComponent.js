@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import MainButtom from 'components/Buttons/MainButton/component';
-import Counter from 'components/Counter/component';
-import Countdown from 'components/Countdown/container';
-import FinalCount from 'components/FinalCount/container';
+import MainButtom from 'components/Buttons/MainButton';
+import Counter from 'components/Counter';
+import Countdown from 'components/Countdown';
+import FinalCount from 'components/FinalCount';
 import styles from 'views/assets/GamePage.module.scss';
 
 class GamePage extends PureComponent {

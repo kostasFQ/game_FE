@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SetTimer from './component';
+import SetTimer from './SetTimerComponent';
 import { setGameTimer } from 'store/game/actions';
 import seconds from 'helpers/secondsArray';
 

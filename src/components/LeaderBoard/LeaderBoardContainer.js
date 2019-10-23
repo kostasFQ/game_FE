@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LeaderBoard from './component';
+import LeaderBoard from './LeaderBoardComponent';
 import { leaderBoard } from 'api/urls';
 import makeCall from 'api/call';
 
