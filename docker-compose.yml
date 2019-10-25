@@ -9,9 +9,21 @@ services:
     ports:
       - 3000:3000
     command: bash -c "yarn && yarn start"
-  test:
-    build:
-      context: .
+    environment:
+      REACT_APP_DEV: $DEV
+    links:
+      - server
+  # test:
+  #   build:
+  #     context: .
+  #   volumes:
+  #     - '.:/app'
+  #   command: bash -c "yarn && yarn test"
+  server:
+    image: node:latest
     volumes:
-      - '.:/app'
-    command: bash -c "yarn && yarn test" 
+      - .:/server
+    working_dir: /server
+    ports:
+      - 9000:9000
+    command: bash -c "cd server && yarn && yarn start"
